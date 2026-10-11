@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "last_run": "2026-10-11T04:44:42.261Z",
+    "root": "/home/mathew/BCP/60-69_Projects_&_Goals/67-Current/67.18-Sale-Catalog-Site",
+    "include_patterns": [
+      "src/**/*.js",
+      "src/**/*.jsx",
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "src/**/*.json",
+      "package.json",
+      "vite.config.js",
+      "index.html"
+    ],
+    "exclude_patterns": [
+      "**/*.test.*",
+      "**/*.spec.*",
+      "dist/**",
+      "node_modules/**",
+      "docs/**"
+    ],
+    "exceptions": []
+  },
+  "file_hashes": {
+    "index.html": "2460f3d5562fcf4df08f706c0e5d68e5",
+    "package.json": "80e83c13e16299e4ee93dd0f5d0b077f",
+    "src/App.jsx": "894b68cc865ac48cd0555797a7814df4",
+    "src/components/Announcement.jsx": "71c9d22f89f5ae444acf0c3ff22bdb26",
+    "src/components/CartDrawer.jsx": "346f664c56d892c50c4a1d5c91462cf2",
+    "src/components/Catalog.jsx": "7a9d530459da9116b9d3452cdc826499",
+    "src/components/CategoryRail.jsx": "d86eb66777f0bc064a84516f6b71b693",
+    "src/components/Footer.jsx": "4a2d5ee273d67d253204b5212830364c",
+    "src/components/Heritage.jsx": "62b81a2855d0109a66c23281c2874cda",
+    "src/components/Hero.jsx": "ca9ad03f5a2ff907198ccfcf265ad67f",
+    "src/components/Journal.jsx": "eba47f7bbbc3b1dcc23853f23a179685",
+    "src/components/Nav.jsx": "e492f96685845f82c14c11ad9084da94",
+    "src/components/OnTheBlock.jsx": "9daccaca3e505c1a5bc6ab5d9403da0b",
+    "src/components/Plate.jsx": "1d1d310fba1b1fc2c8d2a7587f0374aa",
+    "src/components/ProductCard.jsx": "3d0131571c28e3a871af2dd3c62e7004",
+    "src/components/ProductMedia.jsx": "0761dd5e3cbda11224c82024c4b91a9f",
+    "src/components/Reveal.jsx": "4304280a1a43a5fac8c7c3a569ab0e11",
+    "src/components/Vault.jsx": "2e16b2f345bf69064b01f96d859c7f4c",
+    "src/components/icons.jsx": "4fb25135d89fd6f70b66c55b0dbcb1ac",
+    "src/context/CartContext.jsx": "5bace25be6dc03532da521c5d7c335f2",
+    "src/data/products.js": "e6e8b79ec65ada76c5acdb352eda0483",
+    "src/hooks/useCountdown.js": "2e5b51aebaebd87f1be8fe51f2873020",
+    "src/lib/format.js": "b2a797c5c5d0fe5bbdacee2f9739b5ce",
+    "src/main.jsx": "44ca67ae1faa247f0b2c2885e5960acd",
+    "vite.config.js": "dad5c4a0f3a4381d8ddc7cc3fe06c666"
+  },
+  "folder_hashes": {
+    ".": "37a603cecf86d72287f32a993e1faa42",
+    "src": "d4f06fc37c0faf48722c7d54e9efcb4d",
+    "src/components": "4e001df6483b9ee8d48782a869a8e605",
+    "src/context": "52c3ec26caa5f0153fdb79b88bf59b16",
+    "src/data": "680d388bbab3d2d90025c0377d47c991",
+    "src/hooks": "a049b269db11fa8bb894e4f266d56b89",
+    "src/lib": "e9f8d56330b54c17d650a06119955ef7"
+  }
+}

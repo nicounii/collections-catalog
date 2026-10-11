@@ -1,0 +1,481 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   ASHBY & VANE — Design tokens
+   Palette: Marvel's Spider-Man: Miles Morales (PS5) — RED, BLACK,
+   WHITE. Miles' suit is black with red webbing and the wordmark is
+   a red spider: the defining choice is red/black/white with NO blue
+   (blue is what separates Miles from Peter Parker).
+   Structure stays the PlayStation three-canvas system: near-black /
+   cool-white bands, airy light-weight display type, pill CTAs, 8px cards.
+   ============================================================ */
+@theme {
+  /* --- surfaces: the three bands (black / white) --- */
+  --color-ink: #0a0a0c; /* canvas-dark — near-black  */
+  --color-ink-deep: #101014;
+  --color-ink-elev: #16161b;
+  --color-charcoal: #1f1f26;
+  --color-parchment: #f5f5f7; /* canvas-light — cool white */
+  --color-parchment-soft: #ececef; /* surface-soft */
+  --color-card: #ffffff; /* surface-card  */
+
+  /* --- brand / action: the Miles red --- */
+  --color-primary: #e62429;
+  --color-primary-press: #c1121f;
+  --color-primary-active: #8f0a14;
+  --color-on-primary: #ffffff;
+
+  /* --- commerce (store actions) — the black half of the suit --- */
+  --color-commerce: #0f0f12;
+  --color-commerce-press: #26262c;
+  --color-on-commerce: #ffffff;
+
+  /* --- accent: the red glow (powers the single gradient) --- */
+  --color-accent: #e62429;
+  --color-accent-light: #ff5a5f;
+  --color-accent-deep: #8f0a14;
+
+  /* --- text --- */
+  --color-on-dark: #f5f5f7;
+  --color-on-dark-mute: rgba(245, 245, 247, 0.56);
+  --color-body-light: rgba(10, 10, 12, 0.78);
+  --color-mute-light: #5a5a63;
+  --color-ash-light: #b4b4bd;
+  --color-body-dark: rgba(245, 245, 247, 0.76);
+  --color-mute-dark: rgba(245, 245, 247, 0.52);
+
+  /* --- lines --- */
+  --color-hair-light: #e2e2e6;
+  --color-hair-dark: rgba(245, 245, 247, 0.16);
+
+  /* --- links & semantic --- */
+  --color-link-light: #c1121f;
+  --color-link-dark: #ff5a5f;
+  --color-warning: #f59e0b;
+  --color-positive: #10b981;
+
+  /* --- type --- */
+  --font-display: 'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-body: 'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'Spline Sans Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* --- radius vocabulary: 4 / 8 / pill --- */
+  --radius-input: 4px;
+  --radius-card: 8px;
+  --radius-dialog: 16px;
+
+  /* --- elevation (flat by default; lift only on press) --- */
+  --shadow-lift: 0 4px 14px rgba(0, 0, 0, 0.34);
+  --shadow-plate: 0 18px 48px -24px rgba(0, 0, 0, 0.78);
+
+  /* --- motion --- */
+  --ease-fluid: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-snap: cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  html {
+    font-size: 17px; /* bumped base — 40+ friendly */
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-ink);
+    color: var(--color-on-dark);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.55;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 340; /* the system's signature airy-light display weight */
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    margin: 0;
+    font-variation-settings: 'opsz' 100, 'SOFT' 20, 'WONK' 0;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  /* Visible, high-contrast focus for keyboard + older eyes */
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  button,
+  a,
+  input,
+  select {
+    font-family: inherit;
+  }
+}
+
+/* ============================================================
+   Typographic helpers
+   ============================================================ */
+@layer components {
+  .display-xl {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 1.4rem + 4.6vw, 4.2rem);
+    font-weight: 320;
+    line-height: 1.06;
+    letter-spacing: -0.018em;
+    font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;
+  }
+  .display-lg {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 1.3rem + 2.9vw, 3.1rem);
+    font-weight: 330;
+    line-height: 1.1;
+    letter-spacing: -0.012em;
+    font-variation-settings: 'opsz' 120, 'SOFT' 26;
+  }
+  .display-md {
+    font-family: var(--font-display);
+    font-size: clamp(1.55rem, 1.2rem + 1.5vw, 2.2rem);
+    font-weight: 340;
+    line-height: 1.16;
+    letter-spacing: -0.01em;
+  }
+  .heading-lg {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 360;
+    line-height: 1.2;
+  }
+
+  /* eyebrow / label — letterspaced mono caps */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+
+  .lede {
+    font-size: 1.14rem;
+    line-height: 1.6;
+    letter-spacing: 0.002em;
+  }
+
+  /* --- Buttons: every CTA is a full pill --- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 48px;
+    padding: 0.75rem 1.7rem;
+    border-radius: 9999px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition:
+      transform 0.18s var(--ease-snap),
+      background-color 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease,
+      box-shadow 0.18s ease;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+  .btn-primary:hover {
+    background: var(--color-primary-press);
+    box-shadow: var(--shadow-lift);
+  }
+  .btn-primary:active {
+    background: var(--color-primary-active);
+  }
+  .btn-commerce {
+    background: var(--color-commerce);
+    color: var(--color-on-commerce);
+    /* red hairline so the black pill separates on black bands too */
+    border-color: rgba(230, 36, 41, 0.45);
+  }
+  .btn-commerce:hover {
+    background: var(--color-commerce-press);
+    box-shadow: var(--shadow-lift);
+  }
+  .btn-outline-dark {
+    background: transparent;
+    color: var(--color-on-dark);
+    border-color: var(--color-hair-dark);
+  }
+  .btn-outline-dark:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent-light);
+    background: rgba(230, 36, 41, 0.10);
+  }
+  .btn-outline-light {
+    background: transparent;
+    color: var(--color-ink);
+    border-color: #c9c9d0;
+  }
+  .btn-outline-light:hover {
+    border-color: var(--color-ink);
+    background: rgba(20, 17, 12, 0.04);
+  }
+  .btn-sm {
+    min-height: 44px;
+    padding: 0.55rem 1.15rem;
+    font-size: 0.9rem;
+  }
+
+  /* --- Filter / tab chips --- */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.5rem 1.05rem;
+    border-radius: 9999px;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    color: var(--color-ink);
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--color-hair-light);
+    transition: all 0.16s var(--ease-snap);
+  }
+  .chip:hover {
+    border-color: var(--color-ink);
+  }
+  .chip[aria-pressed='true'],
+  .chip.is-active {
+    background: var(--color-ink);
+    color: var(--color-parchment);
+    border-color: var(--color-ink);
+  }
+
+  /* --- Badge --- */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.28rem 0.62rem;
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+}
+
+/* ============================================================
+   Textures & atmosphere
+   ============================================================ */
+
+/* fine paper grain, layered over any surface */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+}
+
+/* engraved diagonals — the catalog-plate hatch */
+.hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(10, 10, 12, 0.05) 0,
+    rgba(10, 10, 12, 0.05) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+.hatch-dark {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(245, 245, 247, 0.05) 0,
+    rgba(245, 245, 247, 0.05) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+/* red glow used behind hero object art */
+.vignette {
+  background:
+    radial-gradient(120% 100% at 78% 30%, rgba(230, 36, 41, 0.24) 0%, transparent 55%),
+    radial-gradient(90% 80% at 20% 90%, rgba(255, 90, 95, 0.16) 0%, transparent 62%);
+}
+
+/* the reserved accent gradient — The Vault only */
+.accent-rule {
+  background: linear-gradient(
+    90deg,
+    var(--color-accent) 0%,
+    var(--color-accent-light) 45%,
+    var(--color-accent-deep) 100%
+  );
+}
+.accent-text {
+  background: linear-gradient(
+    100deg,
+    var(--color-accent-light) 0%,
+    var(--color-accent) 50%,
+    var(--color-accent-deep) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ============================================================
+   Motion
+   ============================================================ */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 34s linear infinite;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.reveal {
+  opacity: 0;
+}
+.reveal.is-in {
+  animation: reveal-up 0.72s var(--ease-fluid) forwards;
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.drawer-in {
+  animation: drawer-in 0.34s var(--ease-fluid) forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: fade-in 0.28s ease forwards;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pop {
+  animation: pop 0.4s var(--ease-snap);
+}
+
+/* signature hover-scale on tiles (from the reference system) */
+.tile-media {
+  transition:
+    transform 0.5s var(--ease-fluid),
+    box-shadow 0.4s ease;
+}
+.tile:hover .tile-media {
+  transform: scale(1.035);
+}
+.tile-ring {
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.35s var(--ease-fluid);
+}
+.tile:hover .tile-ring {
+  border-color: var(--color-accent);
+}
+
+/* hide scrollbar on horizontal rails */
+.no-bar {
+  scrollbar-width: none;
+}
+.no-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================================
+   Reduced motion — always respected
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+  }
+  .tile:hover .tile-media {
+    transform: none;
+  }
+  .marquee-track {
+    animation: none;
+  }
+}

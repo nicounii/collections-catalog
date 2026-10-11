@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Environment (secrets — never commit)
+.env
+.env.local
+.env.*.local
+
+# Generated catalog data (build artifact from Airtable — see scripts/sync-catalog.mjs)
+# Kept out of git: it is regenerated at build time. The committed fallback is
+# src/data/products.sample.json.
+src/data/products.generated.json
+
+# Editor / OS
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

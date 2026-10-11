@@ -1,0 +1,76 @@
+{
+  "hq-002": {
+    "title": "DC Comics Watchmen smiley badge",
+    "creator": "dannybirchall",
+    "license": "by 2.0",
+    "source": "Openverse",
+    "landing": "https://www.flickr.com/photos/48648384@N00/6391786127",
+    "image_url": "https://api.openverse.org/v1/images/8bb5fd6b-b404-412f-abbc-c6ba908223db/thumb/"
+  },
+  "dc-001": {
+    "title": "Batman Vol 1 #150 1962 framed",
+    "creator": "big-ashb",
+    "license": "by 2.0",
+    "source": "Openverse",
+    "landing": "https://www.flickr.com/photos/26673904@N00/34884241473",
+    "image_url": "https://api.openverse.org/v1/images/cc49cc08-7e53-4469-8367-6d7e4809c5ab/thumb/"
+  },
+  "dc-002": {
+    "title": "Action Comics Vol 1 #321 1965",
+    "creator": "big-ashb",
+    "license": "by 2.0",
+    "source": "Openverse",
+    "landing": "https://www.flickr.com/photos/26673904@N00/35693320515",
+    "image_url": "https://api.openverse.org/v1/images/8074fc50-de3f-4fdb-82a8-0efe1508be52/thumb/"
+  },
+  "af-001": {
+    "title": "Spider-Man vs. Tick (325/365)",
+    "creator": "JD Hancock",
+    "license": "by 2.0",
+    "source": "Openverse",
+    "landing": "https://www.flickr.com/photos/83346641@N00/5196860373",
+    "image_url": "https://api.openverse.org/v1/images/9e5082c9-3fb1-4393-8f82-d0ffa3abaf67/thumb/"
+  },
+  "af-003": {
+    "title": "Dragon Ball - Son Goku 6",
+    "creator": "Rod-20",
+    "license": "by-sa 2.0",
+    "source": "Openverse",
+    "landing": "https://www.flickr.com/photos/27411321@N02/6576722725",
+    "image_url": "https://api.openverse.org/v1/images/bed822f8-7de7-4017-835e-70dd678c5d10/thumb/"
+  },
+  "af-004": {
+    "title": "Universal Iron Man",
+    "creator": "JD Hancock",
+    "license": "by 2.0",
+    "source": "Openverse",
+    "landing": "https://www.flickr.com/photos/83346641@N00/7179891505",
+    "image_url": "https://api.openverse.org/v1/images/313f6567-5af7-4e5d-a44e-157fd697c078/thumb/"
+  },
+  "lv-003": {
+    "title": "Hyrule Historia",
+    "creator": "Johan Larsson",
+    "license": "by 2.0",
+    "source": "Openverse",
+    "landing": "https://www.flickr.com/photos/38305415@N00/8621522427",
+    "image_url": "https://api.openverse.org/v1/images/ee5da272-3a2f-4ff8-9698-89eb1aaec0d9/thumb/"
+  },
+  "rg-002": {
+    "title": "File:Sega-Mega-Drive-JP-Mk1-Console-Set.jpg",
+    "creator": "<a href=\"//commons.wikimedia.org/wiki/User:Evan-Amos\" title=\"User:Evan-Amos\">Evan-Amos</a>",
+    "license": "Public domain",
+    "license_url": "",
+    "source": "Wikimedia Commons",
+    "landing": "https://commons.wikimedia.org/wiki/File:Sega-Mega-Drive-JP-Mk1-Console-Set.jpg",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Sega-Mega-Drive-JP-Mk1-Console-Set.jpg/1280px-Sega-Mega-Drive-JP-Mk1-Console-Set.jpg"
+  },
+  "rg-004": {
+    "title": "File:Game Boy Color Pikachu.jpg",
+    "creator": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/37996631475@N01\">Xabi Vazquez</a>",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source": "Wikimedia Commons",
+    "landing": "https://commons.wikimedia.org/wiki/File:Game_Boy_Color_Pikachu.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Game_Boy_Color_Pikachu.jpg"
+  }
+}
