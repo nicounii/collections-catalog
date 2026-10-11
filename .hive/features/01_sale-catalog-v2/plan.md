@@ -67,6 +67,18 @@ flowchart LR
 
 ---
 
+## Amendment Log (Hygienic REJECT fixes, 2026-10-11)
+
+- **Task 3 — fail-loud masking:** `prebuild` no longer chains `sync || ensure-catalog` (the `||` let a failed sync fall back to the sample and build "successfully"). `prebuild` now runs `sync-catalog.mjs` alone → a sync failure fails the build. `ensure-catalog.mjs` is `predev`-only and never masks a sync failure.
+- **Task 3 — loader ambiguity:** one concrete approach: static `import generated from './products.generated.json'`; the file is guaranteed by `prebuild`/`predev`; no runtime fallback, no dynamic-import branch.
+- **Task 3 — field mapping:** full Airtable→app map stated (`image_url`→`image`, `image_alt`→`imageAlt`, `mp_link`→`mpLink`, `order_ref`→`orderRef`, `status`→`status`, `created`→`added`).
+- **Task 6 — `mp_link`/`mpLink`:** mapping lives in Task 3; Task 6 only consumes `product.mpLink` (camelCase).
+- **Task 6B — webhook:** exact manifest `id:<data.id>;request-id:<x-request-id>;ts:<ts>;`, HMAC-SHA256 hex, constant-time compare, 401 on mismatch, ~300s tolerance, lower-cased `data.id`, WebCrypto on Workers (no Node SDK), ack-fast + dedupe, decimal money units, reconciliation backstop.
+- **Task 8 — dead `oldest` sort:** `Catalog.jsx:14,36` sorts on `p.era` which no product has (verified `grep -c "era:"` → 0). Now sorts by sync-provided `added`; `eraYear` helper deleted.
+- **Task 2 — verify:** ESM fix (`require()` → dynamic `import()`).
+
+---
+
 ## Tasks
 
 ### 1. Initialize repo & hygiene
@@ -115,6 +127,7 @@ flowchart LR
 - Write `scripts/export-seed.mjs`: read `src/data/products.js`, map code schema → Airtable field names (`image`→`image_url`, `imageAlt`→`image_alt`), default `status='available'`, emit `seed-sample.json`.
   - Mapping: `{id,title,maker,category,price,condition,art,note,featured}` pass-through; `image_url = image ?? ''`; `image_alt = imageAlt ?? ''`; `mp_link=''`; `order_ref=''`.
 - **OPERATOR:** import `seed-sample.json` into Airtable (CSV import) to bootstrap the base.
+- Note: Airtable's automatic **`Created time`** field is always present and is *not* one of the 14 editable fields. The sync (Task 3) reads it as `added`, which backs the `oldest` sort (Task 8). No manual action needed.
 - `docs/airtable-schema.md`: field table (type, notes, which are required), plus the category single-select values matching `src/data/products.js:34-43`.
 
 **Must NOT do:**
@@ -128,7 +141,7 @@ flowchart LR
 
 **Verify:**
 - [ ] `node scripts/export-seed.mjs` → writes `seed-sample.json`; item count matches `products.length`.
-- [ ] `node -e "const s=require('./seed-sample.json');const p=require('./src/data/products.js'); console.log(s.length, p.products.length)"` → equal numbers.
+- [ ] `node --input-type=module -e "import fs from 'node:fs'; const p = await import('./src/data/products.js'); const s = JSON.parse(fs.readFileSync('./seed-sample.json','utf8')); console.log(s.length, p.products.length)"` → equal numbers. (Note: `products.js` is ESM — plain `require()` fails; use dynamic `import()`.)
 - [ ] `docs/airtable-schema.md` lists all 14 fields.
 - [ ] OPERATOR: Airtable base shows the seeded rows with `status=available`.
 
@@ -140,21 +153,29 @@ flowchart LR
 
 **Files:**
 - Create: `scripts/sync-catalog.mjs`
+- Create: `scripts/ensure-catalog.mjs`
 - Create: `src/data/products.sample.json` (small committed fallback)
 - Modify: `src/data/products.js` → re-point to generated data (keep `CATEGORIES`, helpers, `journalPosts`, `NAV_LINKS`, `SUB_NAV`)
 - Modify: `src/context/CartContext.jsx:2` (import source)
 - Modify: `src/components/Catalog.jsx:2` (import source)
 - Modify: `src/App.jsx:13` (import source)
-- Modify: `package.json` (add `"sync"` and `"sync:check"` scripts)
+- Modify: `package.json` (add `"sync"`, `"prebuild"`, `"predev"` scripts)
 
 **What to do:**
-- `scripts/sync-catalog.mjs`: read `AIRTABLE_TOKEN`/`AIRTABLE_BASE_ID`/`AIRTABLE_TABLE`; paginate with `offset` + `filterByFormula` (exclude `status='sold'`); map fields → the app schema (`image_url`→`image`, `image_alt`→`imageAlt`); write `src/data/products.generated.json`.
-  - **Fail-loud policy:** creds absent → log warning, exit `0`, signal caller to use `products.sample.json`. Creds present but HTTP/API error, or `NODE_ENV=production` and 0 items → log error, exit `1`.
-  - Deterministic ordering (sort by `id`) so diffs are stable.
-- `src/data/products.sample.json`: a committed, small (~6 item) valid array so a creds-less `dev`/`build` still works.
-- `src/data/products.js`: at top, `import generated from './products.generated.json'` guarded by a loader that falls back to `products.sample.json` when the generated file is absent. Keep all existing named exports.
-  - Concrete approach: a `products.generated.js` shim is avoided; instead use a JSON import + try/catch is not possible at module top-level for missing files, so commit **both** a real generated file path and a loader that checks existence via a build-time define — OR simplest: `sync` is a `prebuild` step, and `products.js` imports `./products.generated.json`; if missing, the file `products.sample.json` is copied to that path by a tiny `scripts/ensure-catalog.mjs` run in `predev`/`prebuild`. Choose the copy-fallback approach (no dynamic import gymnastics).
-- `package.json`: `"sync": "node scripts/sync-catalog.mjs"`, `"prebuild": "node scripts/sync-catalog.mjs || node scripts/ensure-catalog.mjs"`, `"predev": "node scripts/ensure-catalog.mjs"`.
+- `scripts/sync-catalog.mjs` — the **only** producer of `src/data/products.generated.json`:
+  - Read `AIRTABLE_TOKEN`/`AIRTABLE_BASE_ID`/`AIRTABLE_TABLE`; paginate via `offset`; `filterByFormula` excludes `status='sold'`.
+  - Field map (Airtable → app): `image_url`→`image`, `image_alt`→`imageAlt`, `mp_link`→`mpLink`, `order_ref`→`orderRef`, `status`→`status`, `created` (Airtable automatic `Created time`)→`added`. All other fields pass through unchanged.
+  - Deterministic output: sort by `id` before writing so git diffs are stable.
+  - **Fail-loud policy (no masking):**
+    - Creds **absent** → if `products.generated.json` is missing, copy `products.sample.json` → it; log a warning; exit `0`.
+    - Creds **present** but (a) HTTP/API error, or (b) `NODE_ENV=production` and 0 items → log error; exit `1` (**the build must fail**; never fall back to the sample).
+- `scripts/ensure-catalog.mjs`: copies `products.sample.json` → `products.generated.json` **only if the target is missing**. Used by `predev` only (local dev without creds). It never overwrites a real synced file and never masks a sync failure.
+- `src/data/products.sample.json`: committed, small (~6-item) valid array for creds-less local dev.
+- `src/data/products.js`: a single static import — `import generated from './products.generated.json'` — exported as `products`; keep all existing named exports (`CATEGORIES`, `byCategory`, `journalPosts`, `NAV_LINKS`, `SUB_NAV`). The file is guaranteed to exist because `prebuild`/`predev` always run the sync/ensure step first; there is **no** runtime fallback and **no** dynamic-import branch (this removes the ambiguity).
+- `package.json`:
+  - `"sync": "node scripts/sync-catalog.mjs"`
+  - `"prebuild": "node scripts/sync-catalog.mjs"`  ← **no `||` chaining**; a sync failure fails the build, exactly as the fail-loud policy requires.
+  - `"predev": "node scripts/ensure-catalog.mjs"`
 
 **Must NOT do:**
 - Do not delete `CATEGORIES`, `byCategory`, `journalPosts`, `NAV_LINKS`, `SUB_NAV` from `products.js`.
@@ -188,7 +209,7 @@ flowchart LR
 
 **What to do:**
 - **OPERATOR:** create a Cloudinary account; create a **restricted/signed** upload preset; upload existing `public/photos/*` and put delivery URLs into Airtable `image_url`.
-- `src/lib/cloudinary.js`: `cldUrl(url, { w, h, crop='fill', quality='auto', format='auto' })` that injects transformation params into a Cloudinary delivery URL; passthrough for non-Cloudinary URLs (e.g., local `/photos/...`).
+- `src/lib/cloudinary.js`: `cldUrl(url, { w, h, crop='fill', quality='auto', format='auto' })` — inject transformation params **only when** `typeof url === 'string' && url.includes('res.cloudinary.com') && url.includes('/image/upload/')`; otherwise return `url` unchanged (local `/photos/...`, empty, or `undefined`). Insertion point: immediately after `/image/upload/` → `…/image/upload/<params>/<publicId>`.
 - `ProductMedia.jsx`: when `product.image` is a Cloudinary URL, render `src` + `srcSet` (e.g. 400/800/1200) with `sizes`; keep `loading="lazy"`, `decoding="async"`. Keep the `<Plate>` glyph fallback untouched.
 - `docs/image-pipeline.md`: preset settings, naming, and the rule **never an open unsigned preset**.
 
@@ -240,7 +261,7 @@ flowchart LR
 **Depends on**: 3
 
 **Files:**
-- Modify: `src/data/products.generated.json` mapping (add `mp_link` passthrough in `scripts/sync-catalog.mjs`)
+- Consume: `product.mpLink` (the `mp_link`→`mpLink` mapping is already produced by Task 3's sync — **no sync change here**)
 - Modify: `src/components/ProductCard.jsx` (add "Comprar" button → `mp_link` when present)
 - Create: `src/lib/whatsapp.js` (`waLink({ phone, text })`)
 - Modify: `src/components/CartDrawer.jsx` (checkout/negotiate actions)
@@ -248,13 +269,21 @@ flowchart LR
 - Create (docs): `docs/checkout.md`
 
 **6A (do now):**
-- **OPERATOR:** create per-item Mercado Pago payment links for a 20–30 item launch subset; paste each into Airtable `mp_link`.
-- Surface `mp_link` through the sync (add to field map).
-- `ProductCard.jsx`: when `product.mpLink` exists, show a primary **Comprar** button linking to it (`target="_blank"`, `rel="noopener"`); keep **Adicionar** (cart) and add a **Negociar** WhatsApp button.
-- `whatsapp.js`: build `https://wa.me/<number>?text=<urlencoded item title + link>`.
+- **OPERATOR:** create per-item Mercado Pago payment links for a 20–30 item launch subset; paste each into Airtable field `mp_link`.
+- Mapping is already wired in Task 3: Airtable `mp_link` → app `mpLink`. `ProductCard` reads `product.mpLink` (**camelCase**). This task only *consumes* it.
+- `ProductCard.jsx`: when `product.mpLink` is a non-empty string, render a primary **Comprar** `<a>` to it (`target="_blank" rel="noopener noreferrer"`); otherwise keep **Adicionar** (cart). Always render a **Negociar** WhatsApp button.
+- `whatsapp.js`: `waLink({ phone, text })` → `https://wa.me/<phone>?text=<encodeURIComponent(text)>`; text = `"Tenho interesse em: <title> (<share URL>)"`.
 
 **6B (after demand proven — build only when operator says go):**
-- `functions/api/mp-webhook.js`: verify `x-signature`/`x-request-id` HMAC against `MP_WEBHOOK_SECRET` (reject on mismatch); **re-fetch** `GET /v1/payments/{id}` and trust the fetched status; on first paid → PATCH Airtable row `status=sold` + `order_ref`; on a **second** paid sale of an already-sold item → `POST /v1/payments/{id}/refunds` (full refund).
+- `functions/api/mp-webhook.js` (Cloudflare Pages Function — runs on the Workers runtime, so use **WebCrypto `crypto.subtle`**, NOT the Node `mercadopago` SDK helper or `node:crypto`):
+  - **Signature check (reject `401` on any failure):** read `x-signature` (`ts=…;v1=…`), `x-request-id`, and `data.id` from the query string (`?data.id=`) or body. Build the manifest **exactly**: `id:<data.id>;request-id:<x-request-id>;ts:<ts>;` with `data.id` **lower-cased**. Compute `HMAC-SHA256(MP_WEBHOOK_SECRET, manifest)` → hex and compare in **constant time** to `v1`. Also reject if `|now − ts|` exceeds the tolerance (~300s).
+  - **Ack fast:** return `200` immediately, then do the work out of band, so MP retries don't duplicate fulfillment.
+  - **Never trust the body:** re-fetch `GET /v1/payments/{id}` with `Authorization: Bearer <MP_ACCESS_TOKEN>` and act on the fetched `status` / `external_reference`.
+  - **Dedupe:** record processed event ids (resource id + `action`) and skip repeats — MP delivery is at-least-once.
+  - **Fulfill:** first `approved` payment → PATCH the Airtable row `status=sold` + `order_ref`.
+  - **Oversell:** a **second** `approved` payment for an already-`sold` item → `POST /v1/payments/{id}/refunds` (full refund).
+  - **Money units:** MP amounts are **decimal currency** (e.g. `149.90`), not cents — do not divide by 100.
+  - **Reconciliation backstop:** a scheduled `GET /v1/payments/search?external_reference=<order>` for orders stuck `pending` reconciles local state **to** MP (never the reverse).
 
 **Must NOT do:**
 - Do not trust the notification body — always re-fetch.
@@ -320,10 +349,11 @@ flowchart LR
 - `src/lib/paginate.js`: pure `paginate(items, page, pageSize)` → `{ items, totalPages, page }`.
 - Keep the result count line in sync; when paginated, show "X–Y of N".
 - Write a small unit test for `paginate` (red→green).
+- **Fix the dead `oldest` sort:** `Catalog.jsx:14,36` compares `p.era`, but no product carries an `era` field (`grep -c "era:" src/data/products.js` → `0`), so this option currently **no-ops**. Sort by the sync-provided `added` timestamp (Task 3) instead: `list = [...list].sort((a, b) => new Date(a.added) - new Date(b.added))`, and delete the now-unused `eraYear` helper (`Catalog.jsx:14`).
 
 **Must NOT do:**
 - Do not add a server search — client-side only over the generated JSON.
-- Do not change sort semantics (`curated/price-asc/price-desc/oldest`).
+- Do not change the **set** of sort options (`curated/price-asc/price-desc/oldest`); `oldest` keeps its label but gains a real backing field.
 
 **References:**
 - `src/components/Catalog.jsx:21-38` — existing filter/sort.
@@ -334,6 +364,7 @@ flowchart LR
 - [ ] `node --test src/lib/paginate.test.js` → passes (page bounds, last partial page, invalid page clamps to 1).
 - [ ] With 400+ generated items, the catalog renders 24 per page and paging works without jank.
 - [ ] Changing category or search resets to page 1.
+- [ ] Selecting "Mais antigos primeiro" reorders by `added` (no longer a silent no-op).
 
 ---
 

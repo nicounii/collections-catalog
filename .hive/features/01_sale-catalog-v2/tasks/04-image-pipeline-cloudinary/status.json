@@ -1,0 +1,14 @@
+{
+  "status": "done",
+  "origin": "plan",
+  "planTitle": "Image pipeline (Cloudinary)",
+  "dependsOn": [
+    "02-airtable-schema--seed-export"
+  ],
+  "baseCommit": "aaf2cd852d080ad371561b3177e17ff0c2a208be",
+  "schemaVersion": 1,
+  "startedAt": "2026-10-11T05:14:23.475Z",
+  "idempotencyKey": "hive-sale-catalog-v2-04-image-pipeline-cloudinary-1",
+  "summary": "Created src/lib/cloudinary.js (cldUrl(url,{w,h,crop,quality,format}) injects transformation params only for res.cloudinary.com /image/upload/ URLs; local paths/empty/undefined pass through unchanged; isCldUrl exported), enhanced src/components/ProductMedia.jsx to emit srcSet (400/800/1200) + sizes for Cloudinary-backed images while keeping loading=lazy/decoding=async and the <Plate> glyph fallback untouched, and created docs/image-pipeline.md (signed/restricted preset settings, naming, never-open-unsigned rule, no API secret in client). ProductCard.jsx needed no change — it already passes ratio and ProductMedia computes srcSet internally. Verified: cldUrl('https://res.cloudinary.com/demo/image/upload/sample.jpg',{w:400}) → w_400,c_fill,q_auto,f_auto; pass-through for /photos/..., undefined, ''; srcSet shape correct; npm run build passes. Not run: interactive npm run dev browser check (headless env). OPERATOR deferred: create Cloudinary account + signed preset, upload public/photos/*, set image_url in Airtable for launch subset.",
+  "completedAt": "2026-10-11T05:15:21.306Z"
+}

@@ -1,0 +1,15 @@
+{
+  "status": "done",
+  "origin": "plan",
+  "planTitle": "Phone-first admin SOP",
+  "dependsOn": [
+    "02-airtable-schema--seed-export",
+    "04-image-pipeline-cloudinary"
+  ],
+  "baseCommit": "c9f7d7ad9d45ab0ab1a95a9fafefb9a39b10ad19",
+  "schemaVersion": 1,
+  "startedAt": "2026-10-11T05:17:26.510Z",
+  "idempotencyKey": "hive-sale-catalog-v2-05-phone-first-admin-sop-1",
+  "summary": "Created docs/listing-sop.md — a phone-first admin SOP for the Airtable-as-admin workflow. Contains the ≤60s checklist (photograph → Cloudinary upload → Airtable row → 5 required fields → publish), field-by-field guidance for the 5 required fields (id, title, category, price, status) plus recommended/leave-alone fields, screenshots-in-words for the Airtable mobile grid and Cloudinary upload, common mistakes (single-select typos, duplicate ids, comma prices, deleting rows), a weekly inventory sweep routine (re-price slow movers, mark sold, refresh photos, clear expired reserved), and a note that the optional restricted-upload form is deferred (not built now). No code changes; no in-app admin form built (Airtable app is the admin). Verified: file exists, all 5 required fields enumerated, weekly sweep section present, deferred note present.",
+  "completedAt": "2026-10-11T05:18:39.464Z"
+}

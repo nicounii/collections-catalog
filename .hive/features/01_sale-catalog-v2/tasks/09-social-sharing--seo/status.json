@@ -1,0 +1,9 @@
+{
+  "status": "pending",
+  "origin": "plan",
+  "planTitle": "Social sharing & SEO",
+  "dependsOn": [
+    "06-checkout--mercado-pago",
+    "08-catalog-scale-ux-400-items"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "status": "done",
+  "origin": "plan",
+  "planTitle": "Initialize repo & hygiene",
+  "dependsOn": [],
+  "summary": "Completed in-session: git init -b main, .gitignore (node_modules, dist, .env*, generated catalog, hive runtime state), .env.example (AIRTABLE_*, CLOUDINARY_*, MP_*), README.md SOP. Committed bc44a79; plan committed ca1981c; pushed to origin/main (nicounii/collections-catalog).",
+  "schemaVersion": 1,
+  "completedAt": "2026-10-11T05:04:51.090Z"
+}

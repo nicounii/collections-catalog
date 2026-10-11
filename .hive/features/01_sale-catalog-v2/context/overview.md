@@ -1,43 +1,53 @@
 # Acervo do Marvete — Build Overview
 
-## At a Glance
+## Acervo do Marvete — Build Overview
 
-Turning an existing (and good) static catalog prototype into a **phone-first store**
-that liquidates a **400+ item** inherited collectibles collection, sold via Instagram/Facebook.
+## Status: 9/10 tasks done; all merged to `main` and pushed. Task 09 deferred by plan.
 
-- **Storefront:** Vite + React 19 + Tailwind 4 — already built and working.
-- **Admin / source of truth:** Airtable (14-field `Catalog` table, qty=1 per item).
-- **Images:** Cloudinary (Airtable free tier caps attachments at 1 GB/base).
-- **Checkout:** Mercado Pago — 6A payment links first, then a verified webhook (6B).
-- **Hosting:** Cloudflare Pages · **Domain:** Registro.br `.com.br` (R$40/yr).
+## What this is
 
-**The two real bottlenecks every task serves:** (1) listing throughput (~60s/item from a
-phone) and (2) trust + secure checkout. If a task serves neither, it's out of scope.
+A phone-first catalog site for a **single-owner curated collection** (quadrinhos, mangás,
+action figures, retro gaming, livros de coleção), replacing the old "ASHBY & VANE" placeholder
+brand. Data lives in Airtable; images in Cloudinary; checkout via Mercado Pago links + WhatsApp;
+hosted on Cloudflare Pages with a `.com.br` domain.
 
-**State:** repo initialized (`git init`, commit `bc44a79`). Plan written. **Not yet built.**
+## Workstream status
 
-## Workstreams
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| 1 | Initialize repo & hygiene | ✅ done | `git init`, `.gitignore`, `.env.example`, `README.md` |
+| 2 | Airtable schema + seed export | ✅ done | operator base + agent export script |
+| 3 | Data sync layer (fail-loud) | ✅ done | `scripts/sync-catalog.mjs` |
+| 4 | Image pipeline (Cloudinary) | ✅ done | operator account + agent code |
+| 5 | Phone-first admin SOP | ✅ done | `docs/listing-sop.md` |
+| 6A | Checkout — payment links | ✅ done | `src/lib/whatsapp.js`, `docs/checkout.md`; ProductCard + CartDrawer |
+| 6B | Checkout — webhook | ⏸ deferred | design captured; needs operator go + MP creds |
+| 7 | Hosting, domain & DNS | ✅ done | `wrangler.toml`, `docs/deploy.md`; operator must connect Pages + register domain |
+| 8 | Catalog scale UX (pagination) | ✅ done | `src/lib/paginate.js` + tests; Catalog 24/page, sort fix |
+| 9 | Social sharing & SEO | ⏸ deferred | plan: do not start before traffic proves the funnel |
+| 10 | Launch polish & trust (brand) | ✅ done | brand retired → Acervo do Marvete; condition/shipping/FAQ docs; mobile tap targets |
 
-| # | Task | Agent-doable? | Depends on |
-|---|------|---------------|-----------|
-| 1 | Initialize repo & hygiene | ✅ DONE | — |
-| 2 | Airtable schema + seed export | ⚠️ operator (base) + agent (export script) | 1 |
-| 3 | Data sync layer (fail-loud) | ✅ agent (needs operator creds to test) | 2 |
-| 4 | Image pipeline (Cloudinary) | ⚠️ operator (account/preset) + agent (code) | 2 |
-| 5 | Phone-first admin SOP | ✅ agent (docs) | 2, 4 |
-| 6A | Checkout — payment links | ⚠️ operator (links) + agent (button) | 3 |
-| 6B | Checkout — webhook | ✅ agent (deferred until demand) | 6A |
-| 7 | Hosting, domain & DNS | ⚠️ operator (accounts) | 3 |
-| 8 | Catalog scale UX (pagination) | ✅ agent | 3 |
-| 9 | Social sharing & SEO | ⏸ deferred | 6, 8 |
-| 10 | Launch polish & trust (brand) | ✅ agent | 6, 7, 8 |
+## Merge history on `main`
 
-**Operator-blocked (needs human accounts):** Airtable base, Cloudinary account + restricted
-preset, Mercado Pago links, Cloudflare Pages + domain. These gate the deployments but **not**
-tasks 1, 3 (code), 5, 8, 10.
+- `bc44af…` Task 01 init
+- … Tasks 02–05
+- `989485e` merge 06 (6A)
+- `a462dd7` merge 07
+- `dbd20f2` merge 08
+- `f1f7738` merge 10
+
+## Operator-blocked (needs human accounts)
+
+Airtable base, Cloudinary account + restricted preset, Mercado Pago payment links,
+Cloudflare Pages + Registro.br domain. These gate deployment but not the code (all code tasks done).
+
+## Open follow-ups
+
+- Task 09 (social sharing & SEO) — deferred until traffic proves the funnel.
+- 6B webhook — deferred until demand.
+- Hero STATS "33+ Produtos" is a hardcoded claim; set the real count (plan targets 400+).
+- Operator must set the real WhatsApp phone (placeholder in `src/lib/whatsapp.js`).
 
 ## Revision History
 
-- **2026-10-11** — Feature `sale-catalog-v2` created in-repo. Task 1 executed (`git init`,
-  `.gitignore`, `.env.example`, `README.md`; commit `bc44a79`). Plan authored from the
-  reviewed `docs/PLAN-SUMMARY.md` + `docs/business-plan.md`, grounded against live source.
+- **2026-10-11** — Feature created; Tasks 01–08, 10 executed, merged, pushed. Task 09 deferred by plan.

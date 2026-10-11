@@ -66,12 +66,46 @@
     {
       "sessionId": "ses_ed6b63325ffezp3FDkdZzDcOOj",
       "startedAt": "2026-10-11T04:49:43.517Z",
-      "lastActiveAt": "2026-10-11T04:49:43.663Z",
+      "lastActiveAt": "2026-10-11T12:24:39.586Z",
       "agent": "hive-master",
       "sessionKind": "primary",
       "baseAgent": "hive-master",
-      "directivePrompt": "Analyze and proceed with our current PLAN [/home/mathew/BCP/60-69_Projects_&_Goals/67-Current/67.18-Sale-Catalog-Site/docs/PLAN-SUMMARY.md], review our codemap if necessary.",
-      "replayDirectivePending": false
+      "directivePrompt": "and our github repo is this one [https://github.com/nicounii/collections-catalog], show me the commits in parts, so each feature have it's own commit.",
+      "replayDirectivePending": false,
+      "featureName": "01_sale-catalog-v2",
+      "directiveRecoveryState": "escalated",
+      "taskFolder": "10-launch-polish--trust",
+      "workerPromptPath": ".hive/features/01_sale-catalog-v2/tasks/10-launch-polish--trust/worker-prompt.md"
+    },
+    {
+      "sessionId": "ses_ed6afb52cffeIxoOPC6hik3vuw",
+      "startedAt": "2026-10-11T04:54:50.365Z",
+      "lastActiveAt": "2026-10-11T04:55:12.499Z",
+      "agent": "hygienic-reviewer",
+      "sessionKind": "subagent",
+      "baseAgent": "hygienic-reviewer",
+      "directivePrompt": "Review the Hive plan for the feature `sale-catalog-v2` (in the current repo: /home/mathew/BCP/60-69_Projects_&_Goals/67-Current/67.18-Sale-Catalog-Site).\n\nUse `hive_plan_read` with feature \"sale-catalog-v2\" to load the plan. Also read `docs/PLAN-SUMMARY.md` and `docs/business-plan.md` for the source intent, and inspect the live code the plan references (src/data/products.js, src/App.jsx, src/context/CartContext.jsx, src/components/Catalog.jsx, src/components/ProductCard.jsx, src/components/ProductMedia.jsx, package.json, index.html).\n\nContext you need:\n- This is a solo-operator project: a phone-first store liquidating a 400+ item inherited collectibles collection (HQs, mangás, action figures, retro games, collector books), sold via Instagram/Facebook.\n- The storefront (Vite + React 19 + Tailwind 4) already exists and works. Admin moves to Airtable; images to Cloudinary; checkout via Mercado Pago (6A payment links first, 6B webhook later); hosting on Cloudflare Pages.\n- Two bottlenecks the plan must serve: (1) listing throughput ~60s/item; (2) trust + secure checkout.\n- Task 1 (git init + hygiene) was already executed this session; commit bc44a79.\n- Some tasks are operator-blocked (human accounts: Airtable base, Cloudinary account, Mercado Pago links, domain). Flag any place the plan confuses agent work with operator work.\n\nEvaluate and return a verdict (OKAY / REJECT) with specific, line-referenced findings. Focus on:\n1. Are the tasks agent-executable as written (concrete files, commands, expected output) or do they hand-wave?\n2. Is the dependency graph coherent (Depends on fields)? Any cycles or missing deps?\n3. Is the data-sync fail-loud policy (creds absent → exit 0 + sample; creds present but API fails or 0 items → exit 1) actually implementable with the described approach, given Vite/React static JSON imports? The plan proposes a copy-fallback via scripts/ensure-catalog.mjs — is that sound or is there a simpler correct approach?\n4. Scope creep / YAGNI: anything beyond the two bottlenecks? Is deferring Task 9 correct?\n5. Missing tasks or risk: anything about the Mercado Pago oversell/refund policy or HMAC verification that is underspecified?\n6. Task granularity: should any task be split or merged?\n\nBe concrete. Cite plan.md sections and file:line where relevant. Do not edit files. End with a clear OKAY or REJECT and, if REJECT, the minimal changes needed.",
+      "replayDirectivePending": false,
+      "featureName": "sale-catalog-v2"
+    },
+    {
+      "sessionId": "ses_ed6a663b0ffeL0CC7bLOheh2bP",
+      "startedAt": "2026-10-11T05:05:01.136Z",
+      "lastActiveAt": "2026-10-11T05:05:04.263Z",
+      "agent": "forager-worker",
+      "sessionKind": "task-worker",
+      "baseAgent": "forager-worker"
+    },
+    {
+      "sessionId": "ses_ed6789d32ffecJ4wtUCC4P5HG8",
+      "startedAt": "2026-10-11T05:55:00.998Z",
+      "lastActiveAt": "2026-10-11T05:59:30.707Z",
+      "agent": "hygienic-reviewer",
+      "sessionKind": "subagent",
+      "baseAgent": "hygienic-reviewer",
+      "directivePrompt": "Review the implementation changes from the latest batch of feature `sale-catalog-v2` (repo root: /home/mathew/BCP/60-69_Projects_&_Goals/67-Current/67.18-Sale-Catalog-Site). Read the plan at `.hive/features/01_sale-catalog-v2/plan.md` and the task specs under `.hive/features/01_sale-catalog-v2/tasks/`.\n\nScope — the four merged tasks (all on `main`, latest merge `f1f7738`):\n\n1. **Task 06 (6A) — checkout/WhatsApp** (commit `a699eef`, merged `989485e`):\n   - `src/lib/whatsapp.js` (new) — `waLink({phone,text})` → `https://wa.me/<phone>?text=<encodeURIComponent(text)>`; `WHATSAPP_PHONE` placeholder.\n   - `docs/checkout.md` (new).\n   - `src/components/ProductCard.jsx` — Comprar `<a target=\"_blank\" rel=\"noopener noreferrer\">` when `product.mpLink`, else Adicionar cart; always Negociar WhatsApp.\n   - `src/components/CartDrawer.jsx` — per-line \"Comprar no Mercado Pago\"; footer \"Negociar pelo WhatsApp\".\n   - 6B webhook intentionally NOT built (deferred per plan).\n\n2. **Task 07 — hosting/domain/DNS** (merged `a462dd7`):\n   - `wrangler.toml` (new, secret-free: name/pages_build_output_dir/compatibility_date).\n   - `docs/deploy.md` (new).\n\n3. **Task 08 — catalog scale UX** (commit `24fe43e`, merged `dbd20f2`):\n   - `src/lib/paginate.js` (new) — pure `paginate(items,page,pageSize)` → `{items,totalPages,page}`; clamps invalid→1, >totalPages→last, empty→1 page.\n   - `src/lib/paginate.test.js` (new) — 6 `node:test` cases.\n   - `src/components/Catalog.jsx` — PAGE_SIZE=24, page state, reset on query/category/sort, \"X–Y de N\" meta, prev/next + \"Página X de Y\", scroll-to-results, fixed `oldest` sort by `added` timestamp, removed `eraYear`.\n\n4. **Task 10 — launch polish & trust** (commit `8a5af0b`, merged `f1f7738`):\n   - Retired \"ASHBY & VANE\" → \"Acervo do Marvete\" across `index.html`, `package.json`, `package-lock.json`, `src/data/products.js`, `src/index.css`, `src/components/{Nav,Footer,Heritage,Hero,Announcement}.jsx`; monogram A&V→AM; footer email → contato@acervodomarvete.com.br.\n   - New docs: `docs/condition-guide.md`, `docs/shipping-returns.md`, `docs/faq.md`.\n   - Mobile QA: `CartDrawer.jsx` quantity steppers h-9→h-11 (44px), remove button 44px, MP link padding.\n\nReview for: correctness, plan adherence, dead code / leftovers, DRY, YAGNI, accessibility/tap targets, doc accuracy, and any regressions. Run `git log --oneline -12` and inspect the diffs/files directly. Verify claims rather than trusting summaries. Return an **OKAY/REJECT** verdict with specific file:line findings and severity. Do not modify code.",
+      "replayDirectivePending": false,
+      "directiveRecoveryState": "consumed"
     }
   ]
 }
