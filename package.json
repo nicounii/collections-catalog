@@ -1,9 +1,9 @@
 {
-  "name": "ashby-and-vane",
+  "name": "acervo-do-marvete",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "ASHBY & VANE — Antiques, Estate Finds & Objects of Consequence. The Autumn House Sale.",
+  "description": "Acervo do Marvete — acervo de um único dono: quadrinhos, mangás, action figures, retro gaming e livros de coleção.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

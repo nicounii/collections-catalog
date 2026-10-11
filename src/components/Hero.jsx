@@ -31,8 +31,8 @@ export default function Hero() {
 
             <Reveal delay={180}>
               <p className="lede mt-7 max-w-[46ch] text-body-dark">
-                HQs clássicas, action figures colecionáveis, cartuchos retro e livros de arte — tudo
-                curado, verificado e pronto para a sua coleção.
+                HQs clássicas, action figures colecionáveis, cartuchos retro e livros de arte — o
+                acervo pessoal de um único dono, curado, verificado e pronto para a sua coleção.
               </p>
             </Reveal>
 

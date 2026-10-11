@@ -18,7 +18,7 @@ function Monogram({ className = 'h-full w-full' }) {
         fill="var(--color-accent-light)"
         letterSpacing="-0.5"
       >
-        A&amp;V
+        AM
       </text>
     </svg>
   );
@@ -79,7 +79,7 @@ export default function Nav() {
             </span>
             <span className="leading-none">
               <span className="block font-display text-[1.28rem] font-[400] tracking-[0.01em] text-on-dark">
-                ASHBY <span className="text-accent">&amp;</span> VANE
+                ACERVO DO <span className="text-accent">MARVETE</span>
               </span>
               <span className="mt-0.5 block font-mono text-[0.6rem] tracking-[0.3em] text-on-dark-mute">
                 QUADRINHOS & COLECIONÁVEIS
@@ -154,7 +154,7 @@ export default function Nav() {
           <div className="fixed inset-0 top-[74px] z-40 bg-black/60 fade-in" onClick={() => setMobile(false)} />
           <div className="fixed left-0 top-[74px] z-50 h-[calc(100dvh-74px)] w-[88%] max-w-sm border-r border-hair-dark bg-ink-deep drawer-in">
             <div className="flex h-full flex-col p-6">
-              <span className="eyebrow mb-5 text-accent/80">Ashby & Vane</span>
+              <span className="eyebrow mb-5 text-accent/80">Acervo do Marvete</span>
               <ul className="space-y-1">
                 {NAV_LINKS.map((l) => (
                   <li key={l}>

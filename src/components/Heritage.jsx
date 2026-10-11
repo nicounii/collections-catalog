@@ -34,9 +34,9 @@ export default function Heritage() {
               Curadoria de verdade para colecionadores de verdade.
             </h2>
             <p className="lede mt-6 max-w-[44ch] text-body-light">
-              A ASHBY &amp; VANE nasceu da paixão por quadrinhos, games e colecionáveis. Selecionamos
-              cada produto a dedo — de HQs raras a action figures lacradas — para que sua coleção
-              tenha só o melhor.
+              O Acervo do Marvete reúne a coleção pessoal de um único dono, formada ao longo de
+              anos. Cada peça foi escolhida a dedo — de HQs raras a action figures lacradas — para
+              que sua coleção tenha só o melhor.
             </p>
             <p className="mt-5 max-w-[44ch] text-body-light">
               Desde edições de luxo até cartuchos retro, tratamos cada item com o mesmo cuidado.

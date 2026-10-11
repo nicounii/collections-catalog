@@ -98,7 +98,7 @@ export default function CartDrawer() {
                           </div>
                           <button
                             onClick={() => remove(line.id)}
-                            className="shrink-0 text-mute-light transition-colors hover:text-warning"
+                            className="grid h-11 w-11 shrink-0 place-items-center rounded-full text-mute-light transition-colors hover:text-warning"
                             aria-label={`Remover ${p.title}`}
                           >
                             <Icon.Close className="h-4 w-4" {...stroke} />
@@ -109,7 +109,7 @@ export default function CartDrawer() {
                           <div className="inline-flex items-center rounded-full border border-hair-light bg-white">
                             <button
                               onClick={() => setQty(line.id, line.qty - 1)}
-                              className="grid h-9 w-9 place-items-center rounded-full text-ink hover:bg-ink/5"
+                              className="grid h-11 w-11 place-items-center rounded-full text-ink hover:bg-ink/5"
                               aria-label="Diminuir quantidade"
                             >
                               <Icon.Minus className="h-4 w-4" {...stroke} />
@@ -117,7 +117,7 @@ export default function CartDrawer() {
                             <span className="w-7 text-center font-mono text-[0.9rem] tabular-nums">{line.qty}</span>
                             <button
                               onClick={() => setQty(line.id, line.qty + 1)}
-                              className="grid h-9 w-9 place-items-center rounded-full text-ink hover:bg-ink/5"
+                              className="grid h-11 w-11 place-items-center rounded-full text-ink hover:bg-ink/5"
                               aria-label="Aumentar quantidade"
                             >
                               <Icon.Plus className="h-4 w-4" {...stroke} />
@@ -133,7 +133,7 @@ export default function CartDrawer() {
                             href={p.mpLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="mt-3 inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-accent hover:underline"
+                            className="mt-2 inline-flex items-center gap-1.5 py-2 text-[0.8rem] font-semibold text-accent hover:underline"
                             aria-label={`Comprar ${p.title} no Mercado Pago`}
                           >
                             <Icon.Bag className="h-3.5 w-3.5" {...stroke} strokeWidth={2.2} />

@@ -3,7 +3,7 @@ import { useCountdown, pad } from '../hooks/useCountdown.js';
 const CLOSE = new Date('2026-10-18T18:00:00Z').getTime();
 
 const MESSAGES = [
-  'Catálogo novo toda semana · Quadrinhos, figures e mais',
+  'Acervo de um único dono · peças únicas',
   'Produtos autenticados e verificados',
   'Entrega para todo o Brasil',
   'Parcele em até 3× sem juros acima de R$150',
