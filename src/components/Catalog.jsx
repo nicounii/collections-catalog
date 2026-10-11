@@ -1,8 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { products, CATEGORIES } from '../data/products.js';
 import ProductCard from './ProductCard.jsx';
 import { Reveal } from './Reveal.jsx';
 import { Icon, stroke } from './icons.jsx';
+import { paginate } from '../lib/paginate.js';
 
 const SORTS = [
   { id: 'curated', label: 'Curadoria' },
@@ -11,12 +12,24 @@ const SORTS = [
   { id: 'oldest', label: 'Mais antigos primeiro' },
 ];
 
-const eraYear = (era) => Number((era?.match?.(/\d{4}/) || [9999])[0]);
+const PAGE_SIZE = 24;
 
 export default function Catalog() {
   const [category, setCategory] = useState('Todos');
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState('curated');
+  const [page, setPage] = useState(1);
+  const resultsRef = useRef(null);
+
+  // Any change to the result set sends the user back to page 1.
+  useEffect(() => {
+    setPage(1);
+  }, [category, query, sort]);
+
+  const goToPage = (next) => {
+    setPage(next);
+    resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -33,9 +46,11 @@ export default function Catalog() {
 
     if (sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price);
     if (sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price);
-    if (sort === 'oldest') list = [...list].sort((a, b) => eraYear(a.era) - eraYear(b.era));
+    if (sort === 'oldest') list = [...list].sort((a, b) => new Date(a.added) - new Date(b.added));
     return list;
   }, [category, query, sort]);
+
+  const { items: pageItems, totalPages, page: currentPage } = paginate(filtered, page, PAGE_SIZE);
 
   return (
     <section id="catalogo" className="relative bg-parchment text-ink grain">
@@ -113,9 +128,14 @@ export default function Catalog() {
         </div>
 
         {/* results meta */}
-        <div className="mt-7 flex items-center justify-between">
+        <div ref={resultsRef} className="mt-7 flex items-center justify-between scroll-mt-24">
           <p className="font-mono text-[0.72rem] uppercase tracking-[0.16em] text-mute-light">
-            {filtered.length} {filtered.length === 1 ? 'produto' : 'produtos'}
+            {totalPages > 1
+              ? `${(currentPage - 1) * PAGE_SIZE + 1}–${Math.min(
+                  currentPage * PAGE_SIZE,
+                  filtered.length,
+                )} de ${filtered.length}`
+              : `${filtered.length} ${filtered.length === 1 ? 'produto' : 'produtos'}`}
             {category !== 'Todos' ? ` · ${category}` : ''}
           </p>
           {(query || category !== 'Todos' || sort !== 'curated') && (
@@ -134,12 +154,40 @@ export default function Catalog() {
 
         {/* product grid */}
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {filtered.map((p, i) => (
+          {pageItems.map((p, i) => (
             <Reveal key={p.id} delay={Math.min(i * 60, 400)}>
               <ProductCard product={p} />
             </Reveal>
           ))}
         </div>
+
+        {/* pagination */}
+        {totalPages > 1 && (
+          <nav
+            className="mt-10 flex items-center justify-center gap-4"
+            aria-label="Paginação do catálogo"
+          >
+            <button
+              type="button"
+              onClick={() => goToPage(Math.max(1, currentPage - 1))}
+              disabled={currentPage <= 1}
+              className="btn btn-outline-light btn-sm disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              Anterior
+            </button>
+            <span className="font-mono text-[0.72rem] uppercase tracking-[0.16em] text-mute-light">
+              Página {currentPage} de {totalPages}
+            </span>
+            <button
+              type="button"
+              onClick={() => goToPage(Math.min(totalPages, currentPage + 1))}
+              disabled={currentPage >= totalPages}
+              className="btn btn-outline-light btn-sm disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              Próxima
+            </button>
+          </nav>
+        )}
 
         {filtered.length === 0 && (
           <div className="py-16 text-center">
