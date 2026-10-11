@@ -1,0 +1,16 @@
+# Cloudflare Pages — project configuration
+#
+# PRIMARY PATH: connect this repo to Cloudflare Pages via the dashboard
+# (Git integration). The dashboard settings mirror what is declared here.
+# See docs/deploy.md for the exact steps.
+#
+# SECRETS ARE NOT HERE. `AIRTABLE_TOKEN`, `MP_ACCESS_TOKEN`, and
+# `MP_WEBHOOK_SECRET` are set in the Pages dashboard
+# (Settings → Environment variables) or via `wrangler pages secret put <NAME>`.
+# Never commit secrets to this file.
+
+name = "acervo-do-marvete"
+compatibility_date = "2026-10-11"
+
+# Vite production build output.
+pages_build_output_dir = "dist"
