@@ -25,3 +25,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Hive agent runtime state (ephemeral); plan/context under features/ are kept
+.hive/sessions.json
+.hive/active-feature
+.hive/features/*/sessions.json
