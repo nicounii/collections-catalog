@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useCart } from '../context/CartContext.jsx';
 import { Icon, stroke } from './icons.jsx';
 import { brl } from '../lib/format.js';
+import { waLink, WHATSAPP_PHONE } from '../lib/whatsapp.js';
 import { products } from '../data/products.js';
 import { ProductMedia } from './ProductMedia.jsx';
 
@@ -126,6 +127,19 @@ export default function CartDrawer() {
                             {brl(p.price * line.qty)}
                           </span>
                         </div>
+
+                        {p.mpLink && (
+                          <a
+                            href={p.mpLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-3 inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-accent hover:underline"
+                            aria-label={`Comprar ${p.title} no Mercado Pago`}
+                          >
+                            <Icon.Bag className="h-3.5 w-3.5" {...stroke} strokeWidth={2.2} />
+                            Comprar no Mercado Pago
+                          </a>
+                        )}
                       </div>
                     </li>
                   );
@@ -146,12 +160,22 @@ export default function CartDrawer() {
                 <span className="font-display text-2xl font-[400] tabular-nums">{brl(subtotal)}</span>
               </div>
               <p className="mt-2 text-[0.8rem] text-mute-light">
-                Frete calculado na finalização. Parcelamento disponível.
+                Cada item é único — finalize a compra pelo link do item ou negocie pelo WhatsApp.
               </p>
-              <button className="btn btn-commerce mt-5 w-full justify-center">
+              <a
+                href={waLink({
+                  phone: WHATSAPP_PHONE,
+                  text: `Tenho interesse em: ${lines
+                    .map((l) => l.product.title)
+                    .join(', ')} (total ${brl(subtotal)}) — ${window.location.href}`,
+                })}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-commerce mt-5 w-full justify-center"
+              >
                 <Icon.Bag className="h-[1.1rem] w-[1.1rem]" {...stroke} />
-                Finalizar compra
-              </button>
+                Negociar pelo WhatsApp
+              </a>
               <button
                 onClick={() => setOpen(false)}
                 className="btn btn-outline-light mt-3 w-full justify-center"
