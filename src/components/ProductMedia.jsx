@@ -44,7 +44,7 @@ export function ProductMedia({
           src={src}
           srcSet={srcSet}
           sizes={sizes}
-          alt={product.imageAlt || `${product.title}, ${product.era}`}
+          alt={product.imageAlt || product.title}
           loading="lazy"
           decoding="async"
           className={`h-full w-full object-cover ${imgClassName}`}

@@ -46,7 +46,7 @@ export default function Catalog() {
 
     if (sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price);
     if (sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price);
-    if (sort === 'oldest') list = [...list].sort((a, b) => new Date(a.added) - new Date(b.added));
+    if (sort === 'oldest') list = [...list].sort((a, b) => (Date.parse(a.added) || 0) - (Date.parse(b.added) || 0));
     return list;
   }, [category, query, sort]);
 

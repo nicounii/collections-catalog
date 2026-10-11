@@ -13,7 +13,7 @@
 //   - Production + 0 items → fail-loud, exit 1 (never ship an empty catalog)
 //
 // Field map (Airtable → app schema): image_url→image, image_alt→imageAlt,
-// mp_link→mpLink, order_ref→orderRef, status→status, created→added.
+// mp_link→mpLink, order_ref→orderRef, status→status, created/Created time→added.
 // All other fields pass through unchanged.
 
 import { writeFileSync, copyFileSync, existsSync } from 'node:fs';
@@ -41,10 +41,12 @@ const FIELD_MAP = {
 function mapRow(fields) {
   const out = {};
   for (const [k, v] of Object.entries(fields)) {
-    if (k === 'created') continue; // handled below
+    if (k === 'created' || k === 'Created time') continue; // handled below
     out[FIELD_MAP[k] ?? k] = v;
   }
-  if (fields.created) out.added = fields.created;
+  // Airtable's auto field is named "Created time"; accept `created` too.
+  const created = fields.created ?? fields['Created time'];
+  if (created) out.added = created;
   return out;
 }
 
