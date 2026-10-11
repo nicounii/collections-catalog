@@ -7,6 +7,12 @@ const COLUMNS = [
   { h: 'Contato', links: ['São Paulo, SP', '+55 (11) 9999-0000', 'contato@acervodomarvete.com.br', 'Seg–Sex, 9h–18h'] },
 ];
 
+const HELP = [
+  { label: 'Perguntas frequentes', href: '#/faq' },
+  { label: 'Guia de condição', href: '#/condicao' },
+  { label: 'Envio e devoluções', href: '#/envio' },
+];
+
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-primary text-on-primary grain">
@@ -38,7 +44,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-8">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-8 lg:grid-cols-5">
             {COLUMNS.map((col) => (
               <div key={col.h}>
                 <h4 className="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-white/90">
@@ -58,6 +64,24 @@ export default function Footer() {
                 </ul>
               </div>
             ))}
+
+            <div>
+              <h4 className="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-white/90">
+                Ajuda
+              </h4>
+              <ul className="mt-4 space-y-2.5">
+                {HELP.map((l) => (
+                  <li key={l.href}>
+                    <a
+                      href={l.href}
+                      className="text-[0.92rem] text-on-primary/85 transition-colors hover:text-on-primary"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
