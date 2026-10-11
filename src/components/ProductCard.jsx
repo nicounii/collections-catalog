@@ -1,6 +1,7 @@
 import { ProductMedia } from './ProductMedia.jsx';
 import { Icon, stroke } from './icons.jsx';
 import { brl } from '../lib/format.js';
+import { waLink, WHATSAPP_PHONE } from '../lib/whatsapp.js';
 import { useCart } from '../context/CartContext.jsx';
 
 const CONDITION_STYLE = {
@@ -64,14 +65,41 @@ export default function ProductCard({ product }) {
               {brl(product.price)}
             </span>
           </div>
-          <button
-            onClick={() => add(product.id)}
-            className="btn btn-commerce btn-sm"
-            aria-label={`Adicionar ${product.title} ao carrinho`}
-          >
-            <Icon.Plus className="h-4 w-4" {...stroke} strokeWidth={2.4} />
-            Adicionar
-          </button>
+          <div className="flex flex-col items-stretch gap-2">
+            {product.mpLink ? (
+              <a
+                href={product.mpLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-commerce btn-sm"
+                aria-label={`Comprar ${product.title} no Mercado Pago`}
+              >
+                <Icon.Bag className="h-4 w-4" {...stroke} strokeWidth={2.4} />
+                Comprar
+              </a>
+            ) : (
+              <button
+                onClick={() => add(product.id)}
+                className="btn btn-commerce btn-sm"
+                aria-label={`Adicionar ${product.title} ao carrinho`}
+              >
+                <Icon.Plus className="h-4 w-4" {...stroke} strokeWidth={2.4} />
+                Adicionar
+              </button>
+            )}
+            <a
+              href={waLink({
+                phone: WHATSAPP_PHONE,
+                text: `Tenho interesse em: ${product.title} (${window.location.href})`,
+              })}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline-light btn-sm"
+              aria-label={`Negociar ${product.title} pelo WhatsApp`}
+            >
+              Negociar
+            </a>
+          </div>
         </div>
       </div>
     </article>
