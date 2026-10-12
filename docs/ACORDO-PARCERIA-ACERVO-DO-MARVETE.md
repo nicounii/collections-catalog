@@ -11,16 +11,15 @@
 
 ## 1. Identificação das partes
 
-**PARTE A (doravante "TITULAR"):** ______________________________
+**PARTE A (doravante "TITULAR"):** Andressa Corrêa Teixeira
 - CPF: ____.____.____-__ · RG: ______________ · Estado civil: ____________
 - Endereço: ________________________________________, Canoas/RS
 
-**PARTE B (doravante "PARCEIRO(A)"):** ______________________________
+**PARTE B (doravante "PARCEIRO(A)"):** Matheus Dias Santos
 - CPF: ____.____.____-__ · RG: ______________ · Estado civil: ____________
 - Endereço: ________________________________________, Canoas/RS
 
-> **Preencher:** marcar quem é o **TITULAR da MEI** (a pessoa em cujo CPF o CNPJ está aberto) e quem é o(a) **PARCEIRO(A)** (participa do negócio, mas sem titularidade do CNPJ).
-> ☐ Titular = Matheus ☐ Titular = Andressa
+> **Definido:** ☑ **Titular = Andressa** (CNPJ no CPF dela) · **PARCEIRO = Matheus** (participa do negócio, sem titularidade do CNPJ).
 > MEI / CNPJ: __.___.___/____-__ · Nome fantasia: **Acervo do Marvete**
 
 ---
@@ -59,9 +58,9 @@ A operação roda **sob a MEI do TITULAR**. O(A) PARCEIRO(A) atua na curadoria, 
 | Atendimento ao cliente (WhatsApp/DM) | ☐ | ☐ |
 | Embalagem e envio | ☐ | ☐ |
 | Controle financeiro (planilha) | ☐ | ☐ |
-| **Aporte do acervo (estoque inicial)** | ☐ | ☐ |
+| **Aporte do acervo (estoque inicial)** | — | ✅ (Matheus) |
 
-> **Preencher** marcando quem faz o quê. O acervo é **herança da família** — marque acima **de quem é o estoque inicial** (isso pesa na divisão da seção 5).
+> **Definido:** o **acervo (estoque inicial) é do Matheus** (herança) → é a parte **reembolsada primeiro** no Modelo 2 (seção 5). As demais tarefas, marquem quem faz o quê.
 
 ---
 
@@ -69,16 +68,16 @@ A operação roda **sob a MEI do TITULAR**. O(A) PARCEIRO(A) atua na curadoria, 
 
 **Definição:** "resultado líquido" = total recebido das vendas **menos** os custos do negócio (DAS, taxas de pagamento/marketplace, frete não repassado, embalagem, domínio e demais despesas da seção 6).
 
-Escolham **um** modelo e preencham os percentuais:
+**Modelo escolhido: 2 (Repasse do acervo primeiro).** Preencham os percentuais e o valor-base:
 
-**☐ Modelo 1 — Sociedade igual (mais simples)**
+**☐ Modelo 1 — Sociedade igual (mais simples)** — *(não utilizada nesta parceria)*
 > O resultado líquido é dividido em **___%** para o TITULAR e **___%** para o PARCEIRO(A).
 > *Sugestão padrão:* **50% / 50%**, adequado quando **os dois trabalham em esforço parecido**.
 
-**☐ Modelo 2 — Repasse do acervo primeiro (protege quem trouxe o estoque)**
-> 1º) Do resultado líquido, devolve-se ao dono do acervo o **valor-base do estoque** acordado em **R$ __________** (ou **___%** das vendas brutas até esse teto);
-> 2º) o que sobrar é dividido em **___%** para o TITULAR e **___%** para o PARCEIRO(A).
-> *Por quê:* o acervo pode ser de **um** de vocês; sem isso, o dono "divide" o próprio patrimônio. Este modelo primeiro recompõe o valor e só então divide o ganho.
+**☑ Modelo 2 — Repasse do acervo primeiro (protege quem trouxe o estoque)** — **ESCOLHIDO ✅**
+> 1º) Do resultado líquido, devolve-se ao **Matheus** (dono do acervo) o **valor-base do estoque** acordado em **R$ __________** *(sugestão: valor de avaliação do acervo — ex.: R$ 40.000)*;
+> 2º) o que sobrar é dividido em **___%** para o TITULAR (**Andressa**) e **___%** para o PARCEIRO(A) (**Matheus**) *(sugestão: 50% / 50%)*.
+> *Por quê:* o acervo é de **um** de vocês; sem isso, o dono "divide" o próprio patrimônio. Este modelo primeiro recompõe o valor e só então divide o ganho.
 
 > 📌 **Regra de ouro:** combinem **por escrito** também **com que frequência** se paga (ex.: mensal), **como** se paga (Pix) e **de onde** sai o dinheiro (conta PJ do TITULAR, após reservar o DAS e as despesas).
 
@@ -121,10 +120,10 @@ Escolham **um** modelo e preencham os percentuais:
 
 ## 10. Duração e encerramento
 
-- **Vigência:** começa na assinatura e vai até o **término da liquidação do acervo** ou **rescisão** por qualquer parte, mediante **aviso escrito de ___ dias**.
+- **Vigência:** começa na assinatura e vai até o **término da liquidação do acervo** ou **rescisão** por qualquer parte, mediante **aviso escrito de 30 dias**.
 - Em caso de encerramento:
   1. Conclui-se as **vendas já iniciadas**;
-  2. Acertam-se as **contas finais** (custo + resultado pendente) em até **___ dias**;
+  2. Acertam-se as **contas finais** (custo + resultado pendente) em até **30 dias**;
   3. O estoque restante fica com o **dono do acervo** (seção 4).
 - O TITULAR pode **encerrar a MEI** quando quiser, avisando o(a) PARCEIRO(A) e liquidando o que for devido até a data.
 
