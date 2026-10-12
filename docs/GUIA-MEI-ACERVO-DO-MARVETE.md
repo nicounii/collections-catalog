@@ -4,7 +4,7 @@
 **Objetivo:** abrir e operar uma MEI para vender o acervo em vários canais (site próprio, Instagram, Facebook, Mercado Livre, OLX, Enjoei, Shopee etc.)
 **Local:** **Canoas / RS**
 **Data:** 11/10/2026
-**Status:** revisado com o recorte de **Rio Grande do Sul / Canoas**. **Titular: Andressa.** Ocupação/CNAE **recomendada na seção 7** (principal **4785-7/99**) — confirmar na Sala MEI no ato da abertura.
+**Status:** revisado com o recorte de **Rio Grande do Sul / Canoas**. **Titular: Andressa.** Ocupações/CNAE **definidas na seção 7** (principal **4785-7/99** + secundárias **4761-0/01** e **4763-6/01**) — confirmar na Sala MEI no ato da abertura.
 
 > ⚠️ **Aviso honesto:** guia prático, não é aconselhamento jurídico/contábil. Antes de decisões definitivas, confirme com um **contador**. Valores e regras são de 2026 e mudam.
 
@@ -18,7 +18,7 @@
 | Local | **Canoas / RS** |
 | Faturamento 1º ano (estimado) | **Até R$ 40 mil** → **folga confortável** no teto de R$ 81 mil |
 | Titular | **Andressa Corrêa Teixeira** (ver Acordo de Parceria) |
-| Ocupação (principal) | **Comerciante de Artigos Usados Independente — CNAE 4785-7/99** (ver seção 7) |
+| Ocupações (CNAE) | principal **4785-7/99** (usados) + secundárias **4761-0/01** (livros) e **4763-6/01** (brinquedos/videogames) — ver seção 7 |
 | CPF | **negativação (nome sujo) não impede** a MEI; basta o CPF estar **regular na Receita** (ver seção 5) |
 
 ---
@@ -144,31 +144,37 @@ Ou seja: se o problema for **só negativação**, pode **abrir a MEI normalmente
 
 ---
 
-## 7. Ocupação / CNAE — recomendação
+## 7. Ocupação / CNAE — recomendação (definida)
 
 A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista oficial** (Anexo XI, Res. CGSN 140/2018), e você registra **pelo nome da ocupação**, não pelo código. Regras:
 
 - **1 ocupação principal + até 15 secundárias** (16 no total); não pode repetir o mesmo CNAE.
 - O teto de **R$ 81 mil/ano soma todas** as ocupações — não há limite por CNAE.
 
-### Recomendação
+### As 3 linhas do acervo
 
-**Principal — "Comerciante de Artigos Usados Independente" (CNAE 4785-7/99).**
-
-É o **balde mais amplo** e o que melhor representa o negócio: o acervo é **usado/herdado**. Essa ocupação cobre, por definição (descrição oficial do CNAE no IBGE): *"livros e revistas usados"*, *"moedas e selos de coleção (numismática/filatelia)"* e *"outros artigos usados"* — ou seja, **HQs, mangás, livros, guias, cards e colecionáveis usados entram todos aqui**.
-
-**Secundárias sugeridas** (opcionais — só para cobrir **itens novos** e sortimento):
-
-| Ocupação (nome exato no Portal) | CNAE | Cobre |
+| Linha do negócio | Ocupação no Portal (nome exato) | CNAE |
 |---|---|---|
-| Antiquário(a) Independente | 4785-7/01 | peças antigas/vintage vendidas como antiguidade |
-| Livreiro(a) Independente | 4761-0/01 | livros **novos**/lacrados |
-| Comerciante de Miudezas e Quinquilharias Independente | 4713-0/02 | lojas de variedades (sortimento misto) |
-| Comerciante de Artigos de Cutelaria Independente | 4759-8/99 | outros artigos de uso pessoal e doméstico (novos, variados) |
+| **Usados em geral** (HQs, mangás, cards, colecionáveis usados) | Comerciante de Artigos Usados Independente | 4785-7/99 |
+| **Livros & revistas** (inclusive os que estão **na embalagem**, mas foram repassados) | Livreiro(a) Independente | 4761-0/01 |
+| **Brinquedos / videogames** | Comerciante de Brinquedos e Artigos Recreativos Independente | 4763-6/01 |
 
-> ⚠️ **Correção importante:** **não** existe ocupação MEI limpa de "brinquedos/action figures". O CNAE **4763-6/02** no MEI chama-se **"Comerciante de Artigos Esportivos"** (não brinquedos). Como as figuras/bonecos do acervo são **usados**, eles entram naturalmente na principal (**4785-7/99**). Se comprarem **novos**, o encaixe mais seguro é **4713-0/02** (variedades) — confirmem na Sala MEI.
+### Como marcar no Portal
 
-**O que fazer:** no Portal, escolha a **principal 4785-7/99** e marque só as secundárias que fizerem sentido (as de novo/variedade). Na dúvida, **pergunte na Sala MEI de Canoas** — escolher errado pode gerar problema fiscal depois.
+- **Principal → "Comerciante de Artigos Usados Independente" (4785-7/99).** É o **balde mais amplo** e o que melhor representa o negócio (o grosso do acervo é **usado/herdado**). A descrição oficial do CNAE cobre *"livros e revistas usados"*, *"moedas e selos de coleção (numismática/filatelia)"* e *"outros artigos usados"*.
+- **Secundárias →**
+  - **"Livreiro(a) Independente" (4761-0/01)** — livros **na embalagem/novos** (descrição oficial: *comércio varejista de livros*).
+  - **"Comerciante de Brinquedos e Artigos Recreativos Independente" (4763-6/01)** — brinquedos e **videogames** (descrição oficial inclui *brinquedos, jogos eletrônicos ou não, peças e acessórios* e lista *"vídeo game"*).
+  - *(opcional)* **"Antiquário(a) Independente" (4785-7/01)** se venderem peças antigas/de época; **"Comerciante de Miudezas e Quinquilharias Independente" (4713-0/02)** para sortimento bem misto.
+
+> ℹ️ **Atenção aos códigos vizinhos** (fáceis de confundir):
+> - **4763-6/01** = **brinquedos / artigos recreativos / videogame** ✅ (é o de vocês).
+> - **4763-6/02** = **artigos esportivos** (não é o de vocês).
+> - **4785-7/99** = **outros artigos usados**; **4785-7/01** = **antiguidades**.
+
+**Dúvida "novo x usado":** mesmo que um livro/brinquedo esteja **na embalagem (novo)**, como foi **repassado** e é revenda, o caminho seguro é **cobrir as duas pontas** — a principal de usados **+** as secundárias de livro (4761-0/01) e brinquedos/recreativos (4763-6/01). Assim nada fica fora do guarda-chuva.
+
+**O que fazer:** no Portal, escolha a **principal 4785-7/99** e adicione as secundárias **4761-0/01** e **4763-6/01**. Na dúvida, **pergunte na Sala MEI de Canoas** — escolher errado pode gerar problema fiscal depois.
 
 *Nota:* a **Tabela A** do Anexo XI (limite R$ 81 mil/ano) cobre comércio/serviços comuns — é o caso de vocês. A Tabela B (limite maior) é essencialmente transporte de cargas.
 
@@ -266,7 +272,7 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 
 - [x] **Decidir quem** será o titular. → **Andressa**
 - [ ] Ter conta **gov.br Prata/Ouro**.
-- [x] Escolher a **ocupação/CNAE**. → principal **4785-7/99** + secundárias (seção 7); confirmar na Sala MEI.
+- [x] Escolher as **ocupações/CNAE**. → principal **4785-7/99** + secundárias **4761-0/01** e **4763-6/01** (seção 7); confirmar na Sala MEI.
 - [ ] **Abrir a MEI** (15 min) e salvar o **CCMEI** — ou ir à **Sala MEI (Rua Dr. Barcelos, 969, Centro)**.
 - [ ] **Emitir e pagar o 1º DAS**.
 - [ ] Abrir **conta PJ**.
@@ -279,7 +285,7 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 
 ## 15. Ainda em aberto (para fechar 100%)
 
-1. **Ocupação/CNAE** — ✅ recomendação definida na **seção 7** (principal **4785-7/99**). Confirmar na Sala MEI no ato da abertura.
+1. **Ocupação/CNAE** — ✅ definida na **seção 7** (principal **4785-7/99** + secundárias **4761-0/01** e **4763-6/01**). Confirmar na Sala MEI no ato da abertura.
 2. Só **usado** ou também **produto novo**? — define se marcam as secundárias de novo/variedade (seção 7).
 3. **Titular** — ✅ **Andressa** (ver Acordo de Parceria).
 4. (Site) número de **WhatsApp** real.
@@ -292,7 +298,7 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 - Receita Federal — "MEI: atualização de valores devidos em 2026" (INSS R$ 81,05; ICMS R$ 1,00; salário mínimo R$ 1.621,00).
 - Agência Sebrae / Times Brasil — DAS 2026 (R$ 82,05 / R$ 86,05 / R$ 87,05).
 - Câmara dos Deputados — PLP 186/2026 (tramitação; não aprovado).
-- Resolução CGSN nº 140/2018, Anexo XI (ocupações permitidas); Portal do Empreendedor (gov.br) — "Ocupações Permitidas" e FAQ "O MEI pode ter mais de uma ocupação?" (**1 principal + até 15 secundárias**); IBGE/Concla — descrição do CNAE **4785-7/99** (livros/revistas usados, numismática, filatelia).
+- Resolução CGSN nº 140/2018, Anexo XI (ocupações permitidas); Portal do Empreendedor (gov.br) — "Ocupações Permitidas" e FAQ "O MEI pode ter mais de uma ocupação?" (**1 principal + até 15 secundárias**); IBGE/Concla — descrição dos CNAEs **4785-7/99** (livros/revistas usados, numismática, filatelia), **4761-0/01** (livros) e **4763-6/01** (brinquedos, jogos eletrônicos ou não, videogame e acessórios).
 - **RS:** Portal do Estado do RS (estado.rs.gov.br/mei); Decreto nº 57.789 (IE automática para MEI); SEFAZ-RS (NFA-e / NFF; dispensa de emissão).
 - **Canoas:** Prefeitura de Canoas — Sala MEI / Sala do Empreendedor (SMDEI, Rua Dr. Barcelos, 969).
 - CGSIM Resolução nº 59/2020 (dispensa de alvará/licença para MEI).

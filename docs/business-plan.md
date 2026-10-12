@@ -30,7 +30,7 @@
 | Field | Value |
 |-------|-------|
 | Business name | **Acervo do Marvete** |
-| Legal structure | Individual (CPF) at start; consider **MEI** once revenue is steady |
+| Legal structure | **MEI** (Microempreendedor Individual, comércio) — to be opened. **Titular: Andressa Corrêa Teixeira** (partnership agreement with Mathew; see Decisions) |
 | Stage | **Pre-revenue.** v1 static catalog prototype exists (~29 placeholder items) |
 | Mission | Turn a lifetime collection into fair value for collectors, honestly and quickly |
 | Location / model | Brazil, remote, **phone-first** operations |
@@ -212,7 +212,7 @@ Everything in the v2 plan is aimed at these two.
 
 **Honesty rule:** these are guesses on a finite inventory. Conservative scenario (~R$3,600/mo) still yields a clearly profitable, low-risk operation.
 
-**Tax note:** `[VERIFY]` **MEI** has an annual revenue ceiling (was ~R$81k/yr; a raise has been proposed for 2026 — confirm current limit). If revenue approaches it, plan for ME (Simples Nacional). Selling inherited personal goods may have different IRPF treatment than business income — **check with an accountant before scaling.**
+**Tax note:** **MEI** ceiling is **R$81k/yr in 2026** (the increase proposed by PLP 186/2026 was **not approved** — reconfirm yearly). **DAS comércio 2026 ≈ R$82,05/month**. The MEI is to be opened in **Andressa's CPF** (see Decisions); Mathew stays as partner and owner of the inventory (acervo). If revenue approaches the ceiling, plan for **ME** (Simples Nacional) or a **LTDA**. Selling inherited personal goods may have different IRPF treatment than business income — **check with an accountant before scaling.**
 
 ---
 
@@ -227,7 +227,7 @@ Everything in the v2 plan is aimed at these two.
 | 5 | **Pricing uncertainty** (no market comps) | High | Med | Research comps (Mercado Livre/PriceCharting for games) before pricing; start at market, adjust weekly |
 | 6 | **Trust / chargebacks** | Medium | Med | Use Mercado Pago (buyer protection + antifraud); document condition in photos; clear no-return policy for used items |
 | 7 | **Condition disputes / shipping damage** | Medium | Med | Over-photograph flaws; pack figures/rare HQs carefully; offer tracked shipping |
-| 8 | **Tax / MEI ceiling** | Low (early) | Med | Monitor revenue; consult accountant near the ceiling |
+| 8 | **Tax / MEI ceiling** | Low (early) | Med | MEI opened in **Andressa's CPF**; CNAEs fixed (4785-7/99 + 4761-0/01 + 4763-6/01); monitor revenue; consult accountant near the R$81k/yr ceiling |
 | 9 | ~~**Brand mismatch** (placeholder name)~~ | ~~High~~ **Resolved** | ~~Low~~ | **✅ Brand decided: "Acervo do Marvete."** |
 | 10 | **Listing bottleneck** (400 items feels endless) | **High** | **High** | The entire v2 admin design targets this — **phone-first, ~60s per item**, batch sessions |
 
@@ -243,6 +243,13 @@ Everything in the v2 plan is aimed at these two.
 4. **Shipping** — ✅ **Both** (nationwide via Correios/Melhor Envio **and** local pickup; buyer chooses).
 5. **Pricing source** — ⏳ open: do you want a comp-lookup workflow (PriceCharting for games, sold-listing research for HQs)?
 6. **Language of this document** — ⏳ open: English now; translate to Portuguese if useful.
+
+### Resolved 2026-10-12
+
+7. **MEI titular** — ✅ **Andressa Corrêa Teixeira** (partner). Mathew stays as **partner + owner of the acervo**, not titular.
+8. **Legal form** — ✅ **MEI (comércio)** in **Canoas/RS** — 1 main occupation + up to 15 secondary (16 total).
+9. **CNAEs (occupations)** — ✅ main **4785-7/99** "Comerciante de Artigos Usados Independente" (used goods) + secondary **4761-0/01** "Livreiro(a) Independente" (books) and **4763-6/01** "Comerciante de Brinquedos e Artigos Recreativos Independente" (toys/videogames). Rationale: cover used + sealed/new + toys amid one umbrella.
+10. **Profit split** — ✅ after reimbursing Mathew's **inventory base value** (left blank until signing), the remaining profit is split **50/50**. Formalized in `docs/ACORDO-PARCERIA-ACERVO-DO-MARVETE.md`.
 
 ---
 
