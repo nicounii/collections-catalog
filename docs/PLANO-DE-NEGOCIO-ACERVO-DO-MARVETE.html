@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Plano de Negócio – Acervo do Marvete</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    body{line-height:1.7;color:#1f2937;background:#fff}
+    header{padding:40px 32px;background:#0b1026;color:#fff}
+    header h1{font-size:28px;margin-bottom:6px}
+    header p{opacity:.9}
+    main{max-width:900px;margin:0 auto;padding:32px}
+    h1{font-size:26px;margin:32px 0 12px}
+    h2{font-size:20px;margin:24px 0 10px;color:#111827}
+    h3{font-size:16px;margin:18px 0 8px;color:#111827}
+    p,li{margin:8px 0;font-size:14px}
+    ul,ol{margin:10px 0 10px 22px}
+    table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+    th,td{border:1px solid #e5e7eb;padding:8px;text-align:left}
+    th{background:#f9fafb}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0}
+    .card{border:1px solid #e5e7eb;border-radius:10px;padding:14px}
+    .ok{color:#065f46}
+    .warn{color:#92400e}
+    .todo{color:#991b1b}
+    footer{padding:24px 32px;text-align:center;color:#6b7280;font-size:12px}
+    .page-break{page-break-before:always}
+    @media print{header{color:#000;background:#fff;border-bottom:1px solid #e5e7eb} .card{break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Plano de Negócio – Acervo do Marvete</h1>
+    <p>Catálogo de venda (Acervo do Marvete) | Site já publicado</p>
+    <p>Data: 11/10/2026</p>
+  </header>
+  <main>
+    <section>
+      <h1>1) Sumário Executivo</h1>
+      <p>O <strong>Acervo do Marvete</strong> é um catálogo online para venda de peças do acervo. Site já publicado e funcional em Vite + React.</p>
+    </section>
+    <section>
+      <h1>2) Proposta de Valor</h1>
+      <ul>
+        <li><strong>Fácil</strong>: navegação por categorias, vitrine, busca/ordenação simples</li>
+        <li><strong>Transparente</strong>: FAQ, Guia de Condição, Envio e Devoluções já disponíveis (#/faq, #/condicao, #/envio)</li>
+        <li><strong>Pronto pra vender</strong>: carrinho + checkout via WhatsApp (funcional) e estrutura p/ Mercado Pago</li>
+        <li><strong>Rápido p/ publicar</strong>: Cloudflare Pages (deploy estático)</li>
+      </ul>
+    </section>
+    <section>
+      <h1>3) Público-Alvo</h1>
+      <ul>
+        <li>Colecionadores e entusiastas de peças vintage/colecionáveis</li>
+        <li>Compradores que buscam peças específicas do acervo</li>
+        <li>Seguidores/contatos diretos via WhatsApp</li>
+      </ul>
+    </section>
+    <section>
+      <h1>4) Oferta & Catálogo</h1>
+      <ul>
+        <li>Catálogo com cards: foto, título, preço, categoria, disponibilidade</li>
+        <li>Ordenação: mais recentes / mais antigos / menor preço / maior preço</li>
+        <li>Paginação p/ 400+ itens (já implementada)</li>
+        <li>Dados: Airtable → export JSON → <code>src/data/products.sample.json</code></li>
+      </ul>
+    </section>
+    <section>
+      <h1>5) Precificação</h1>
+      <p>Valores em BRL (R$). Preços definidos no Airtable.</p>
+    </section>
+    <section>
+      <h1>6) Checkout & Pagamento</h1>
+      <table>
+        <thead><tr><th>Forma</th><th>Status</th><th>Observação</th></tr></thead>
+        <tbody>
+          <tr><td>WhatsApp</td><td>Ativo</td><td>Gera mensagem com carrinho/itens</td></tr>
+          <tr><td>Mercado Pago (link por item)</td><td>Parcial</td><td>Falta criar links MP e salvar <code>mp_link</code> no Airtable</td></tr>
+          <tr><td>Mercado Pago (webhook)</td><td>Pendente</td><td>Cloudflare Pages Function + WebCrypto HMAC-SHA256</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h1>7) Operações</h1>
+      <ul>
+        <li><strong>Fotos</strong>: Cloudinary (ou subir direto)</li>
+        <li><strong>Produtos</strong>: Airtable → exportar JSON</li>
+        <li><strong>Documentação</strong>: FAQ/Condição/Envio-Devoluções em <code>#/faq</code>, <code>#/condicao</code>, <code>#/envio</code></li>
+      </ul>
+    </section>
+    <section>
+      <h1>8) Custos</h1>
+      <table>
+        <thead><tr><th>Item</th><th>Valor</th><th>Obs</th></tr></thead>
+        <tbody>
+          <tr><td>Domínio (.com.br)</td><td>~R$ 60–120/ano</td><td>Registro.br</td></tr>
+          <tr><td>Hospedagem (Cloudflare Pages)</td><td>R$ 0</td><td>Gratuito</td></tr>
+          <tr><td>Airtable</td><td>R$ 0</td><td>Plano atual</td></tr>
+          <tr><td>Cloudinary</td><td>R$ 0</td><td>Free tier</td></tr>
+          <tr><td>Mercado Pago</td><td>Taxa por venda</td><td>Padrão MP</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h1>9) Status Atual</h1>
+      <div class="grid">
+        <div class="card"><strong>Build/Deploy</strong><p class="ok">✓ Vite build OK</p><p class="ok">✓ Rotas hash p/ docs OK</p></div>
+        <div class="card"><strong>Trust</strong><p class="ok">✓ #/faq, #/condicao, #/envio</p><p class="ok">✓ Footer "Ajuda"</p></div>
+        <div class="card"><strong>Catálogo</strong><p class="ok">✓ Paginação 400+</p><p class="ok">✓ Ordenação corrigida</p></div>
+        <div class="card"><strong>Checkout</strong><p class="warn">⚠ WhatsApp ativo</p><p class="warn">⚠ Links MP pendentes</p></div>
+      </div>
+    </section>
+    <div class="page-break"></div>
+    <section>
+      <h1>10) Próximos Passos – TERMINAR HOJE</h1>
+      <table>
+        <thead><tr><th>Ação</th><th>Prioridade</th></tr></thead>
+        <tbody>
+          <tr><td>1) Abrir URL real do Cloudflare Pages e testar</td><td>ALTA</td></tr>
+          <tr><td>2) Definir <code>WHATSAPP_PHONE</code> em <code>src/lib/whatsapp.js</code> (5511999999999)</td><td>ALTA</td></tr>
+          <tr><td>3) Criar links MP por item (Checkout Pro) e preencher <code>mp_link</code> no Airtable</td><td>ALTA</td></tr>
+          <tr><td>4) Testar "Comprar" (WhatsApp + MP)</td><td>ALTA</td></tr>
+          <tr><td>5) Testar <code>#/faq</code>, <code>#/condicao</code>, <code>#/envio</code> + rodapé "Ajuda"</td><td>ALTA</td></tr>
+          <tr><td>6) Validar carrinho (adicionar/remover) + total</td><td>MÉDIA</td></tr>
+        </tbody>
+      </table>
+      <p class="todo"><strong>Meta HOJE:</strong> conseguir testar compra com sucesso pelo site publicado.</p>
+    </section>
+    <section>
+      <h1>11) Próximos Passos – ATÉ AMANHÃ</h1>
+      <table>
+        <thead><tr><th>Ação</th><th>Prioridade</th></tr></thead>
+        <tbody>
+          <tr><td>Adicionar mais fotos/produtos (Airtable) e atualizar JSON</td><td>ALTA</td></tr>
+          <tr><td>Sincronizar imagens via Cloudinary (se usar)</td><td>MÉDIA</td></tr>
+          <tr><td>Ajustar textos/descrições se necessário</td><td>BAIXA</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h1>12) Futuro</h1>
+      <ul>
+        <li><strong>Task 6B</strong> – Webhook Mercado Pago (só se usar checkout direto MP)</li>
+        <li><strong>Task 09</strong> – Compartilhamento/SEO (adiar até ter tráfego)</li>
+        <li><strong>Domínio .com.br</strong> – apontar via Cloudflare Pages quando pronto</li>
+      </ul>
+    </section>
+  </main>
+  <footer>Acervo do Marvete – Plano de Negócio | 11/10/2026</footer>
+</body>
+</html>
