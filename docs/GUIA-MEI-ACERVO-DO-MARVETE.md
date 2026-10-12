@@ -18,6 +18,7 @@
 | Local | **Canoas / RS** |
 | Faturamento 1º ano (estimado) | **Até R$ 40 mil** → **folga confortável** no teto de R$ 81 mil |
 | Titular | a definir entre vocês (ver seção 3) |
+| CPF | **negativação (nome sujo) não impede** a MEI; basta o CPF estar **regular na Receita** (ver seção 5) |
 
 ---
 
@@ -27,6 +28,7 @@
 - **Recomendação (já alinhada):** abrir **1 MEI** agora (barato, rápido) e migrar para **LTDA** só se o negócio crescer.
 - **Custo:** formalização **R$ 0**; DAS ≈ **R$ 82,05/mês** (comércio, 2026). Total ≈ **R$ 85–90/mês**.
 - **Limite:** **R$ 81.000/ano** em 2026. Com faturamento estimado de **até R$ 40 mil**, vocês ficam **bem abaixo** — sem risco de estourar.
+- **CPF negativado (Serasa/SPC):** **não impede** abrir a MEI (ver seção 5).
 - **No RS:** o MEI **recebe Inscrição Estadual automaticamente** e emite nota de graça pelo app **Nota Fiscal Fácil**.
 
 ---
@@ -63,7 +65,7 @@ A MEI foi criada para formalizar **um** profissional que trabalha sozinho. Na pr
 ## 3. O que fazer agora (Fase 1)
 
 1. **Escolher o titular** — quem tem CPF regular e disponibilidade para abrir e manter a MEI em dia. (O "quem" é decisão de vocês; não precisa me dizer.)
-2. **Abrir a MEI** (seção 5) em nome dessa pessoa.
+2. **Abrir a MEI** (seção 6) em nome dessa pessoa.
 3. O outro ajuda na curadoria, fotos, atendimento e envio.
 4. Redigir um **acordo particular de parceria** entre os dois (organiza a divisão de resultados — mas **não** cria propriedade legal sobre o CNPJ).
 
@@ -78,7 +80,7 @@ A MEI foi criada para formalizar **um** profissional que trabalha sozinho. Na pr
 
 ## 4. Quem pode (e quem não pode) ser MEI
 
-✅ **Pode:** CPF regular, **16 anos ou mais**, ocupação permitida e sem impedimentos.
+✅ **Pode:** CPF **regular na Receita**, **16 anos ou mais**, ocupação permitida e sem impedimentos. *(Nome negativado no Serasa/SPC **não** impede — ver seção 5.)*
 
 ❌ **Não pode:**
 - Menor de **16 anos**;
@@ -90,13 +92,49 @@ A MEI foi criada para formalizar **um** profissional que trabalha sozinho. Na pr
 
 ---
 
-## 5. Passo a passo: abrir a MEI (grátis, ~15 min)
+## 5. CPF negativado (nome sujo) ou irregular — o que fazer
+
+Muita gente acha que "estar com o nome sujo" impede abrir a MEI. **Não impede.** Os dois casos são coisas diferentes:
+
+| Situação | O que é | Impede abrir MEI? |
+|---|---|---|
+| **Negativação ("nome sujo")** | dívidas/boletos atrasados registrados no Serasa, SPC, bancos | ❌ **Não impede** |
+| **CPF irregular na Receita** | situação cadastral "Suspensa", "Pendente de Regularização" ou "Cancelada" | ✅ **Impede** — regularize antes |
+
+O próprio **Portal do Empreendedor (gov.br)** diz:
+
+> *"Não existem impedimentos para que a pessoa física com débitos, dívidas comerciais ou bancárias, tendo ou não restrição cadastral junto às instituições de proteção ao crédito, se formalize como MEI."*
+
+Ou seja: se o problema for **só negativação**, pode **abrir a MEI normalmente** — a abertura **não faz consulta de crédito**.
+
+**O que a negativação PODE atrapalhar** (não a abertura):
+- **Conta PJ** — cada banco decide; bancos digitais costumam aceitar (às vezes com limite menor).
+- **Maquininha, crédito, empréstimo, antecipação de recebíveis** — aqui o nome pesa.
+
+> 💡 **Dica:** abram a MEI primeiro (não depende de crédito) e depois procurem um banco digital que aceite PJ negativada.
+
+**Se o CPF estiver irregular na Receita (aí sim trava)** — não há atalho, é regularizar, e é rápido e barato:
+1. **Consulte grátis:** "Comprovante de Situação Cadastral no CPF" (site da Receita Federal).
+2. **"Pendente de Regularização"** (não entregou DIRPF): entregue a declaração atrasada — multa mínima **R$ 165,74**. Regulariza em 24–72h.
+3. **"Suspensa"** (dado cadastral inconsistente): atualize o CPF online, por e-mail ou nos Correios/BB/Caixa — custo de até **R$ 7**.
+4. **"Cancelada"** (suspensa por 5 anos ou mais): mais trabalhoso, mas reversível.
+
+⚠️ **O que NÃO fazer (risco real):** abrir a MEI **no CPF de outra pessoa** ("laranja") para contornar é **crime e sai caro**:
+- **Falsidade ideológica** (Art. 299 do Código Penal) e, se esconder faturamento, **crime contra a ordem tributária** (Lei 8.137/90 — **2 a 5 anos + multa**).
+- A Receita **cancela** esses CNPJs: desenquadramento retroativo, multa de até **75%** (dobra em fraude) e exclusão do Simples.
+- Quem "empresta" o nome fica com **todos os débitos** no CPF — vira problema para os dois.
+
+**Caminho correto:** o titular tem de ser **quem é o dono real**. Se for de fato a Andressa, ela pode abrir no CPF dela — isso é legítimo. Se o CPF estiver irregular, **regularize antes**.
+
+---
+
+## 6. Passo a passo: abrir a MEI (grátis, ~15 min)
 
 1. Tenha conta **gov.br nível Prata ou Ouro** (app "gov.br", reconhecimento facial).
 2. Acesse o **Portal do Empreendedor** (gov.br/empresas-e-negocios) → "Quero ser MEI" / "Formalize-se".
 3. Faça **login com o gov.br**.
-4. Preencha: dados pessoais; **endereço** (pode ser residencial — em Canoas, e-commerce em casa costuma ser aceito); **nome fantasia** (ex.: **Acervo do Marvete**); **ocupação principal** + secundárias (seção 6); forma de atuação (ex.: **internet**); **capital social** (valor simbólico, ex.: R$ 1.000); marque **optante pelo SIMEI**.
-5. Aceite o **Termo de Ciência e Responsabilidade** (esse termo já **dispensa** alvará/licença prévia — ver seção 8).
+4. Preencha: dados pessoais; **endereço** (pode ser residencial — em Canoas, e-commerce em casa costuma ser aceito); **nome fantasia** (ex.: **Acervo do Marvete**); **ocupação principal** + secundárias (seção 7); forma de atuação (ex.: **internet**); **capital social** (valor simbólico, ex.: R$ 1.000); marque **optante pelo SIMEI**.
+5. Aceite o **Termo de Ciência e Responsabilidade** (esse termo já **dispensa** alvará/licença prévia — ver seção 9).
 6. **Pronto:** saem o **CCMEI** e o **CNPJ na hora**. Guarde o CCMEI em PDF.
 7. **Gere e pague o 1º DAS** (vence dia 20 do mês seguinte).
 8. **(Recomendado) Abra uma conta PJ** grátis num banco digital.
@@ -105,7 +143,7 @@ A MEI foi criada para formalizar **um** profissional que trabalha sozinho. Na pr
 
 ---
 
-## 6. Ocupação / CNAE — o ponto que precisa de atenção ⚠️
+## 7. Ocupação / CNAE — o ponto que precisa de atenção ⚠️
 
 A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista oficial** (Anexo XI, Res. CGSN 140/2018). Candidatos a investigar (⚠️ **confirmar um a um** no Portal, buscando pelo **nome da ocupação**):
 
@@ -124,7 +162,7 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 
 ---
 
-## 7. Depois de aberta: as obrigações
+## 8. Depois de aberta: as obrigações
 
 | Obrigação | Frequência | Resumo |
 |---|---|---|
@@ -135,7 +173,7 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 
 ---
 
-## 8. Nota fiscal e Inscrição Estadual — o caso do RS
+## 9. Nota fiscal e Inscrição Estadual — o caso do RS
 
 **Boas notícias específicas do Rio Grande do Sul:**
 
@@ -158,7 +196,7 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 
 ---
 
-## 9. Canal por canal — o que cada plataforma exige
+## 10. Canal por canal — o que cada plataforma exige
 
 | Canal | Exige CNPJ? | Observações |
 |---|---|---|
@@ -173,7 +211,7 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 
 ---
 
-## 10. Limite de faturamento — e se passar
+## 11. Limite de faturamento — e se passar
 
 - **2026:** R$ 81.000/ano = ~R$ 6.750/mês.
 - No **ano de abertura**, o limite é **proporcional** (R$ 6.750 × meses restantes do ano).
@@ -184,7 +222,7 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 
 ---
 
-## 11. Custos reais (2026)
+## 12. Custos reais (2026)
 
 | Item | Valor | Obs |
 |---|---|---|
@@ -199,7 +237,7 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 
 ---
 
-## 12. Erros comuns (evitem)
+## 13. Erros comuns (evitem)
 
 - Abrir MEI "no nome dos dois" — **não existe**.
 - Duas MEIs para o **mesmo** negócio — risco de **fracionamento**.
@@ -208,10 +246,11 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 - Emitir NF de forma errada / deixar de emitir quando exigido (PJ).
 - **Ultrapassar o teto** sem planejar (não é o caso de vocês agora).
 - Misturar dinheiro pessoal e da loja — use a **conta PJ**.
+- Abrir MEI **no CPF de outra pessoa** (laranja) para contornar — é **crime** (falsidade ideológica / ordem tributária) e a Receita cancela o CNPJ (ver seção 5).
 
 ---
 
-## 13. Checklist desta semana
+## 14. Checklist desta semana
 
 - [ ] **Decidir quem** será o titular.
 - [ ] Ter conta **gov.br Prata/Ouro**.
@@ -226,7 +265,7 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 
 ---
 
-## 14. Ainda em aberto (para fechar 100%)
+## 15. Ainda em aberto (para fechar 100%)
 
 1. **Ocupação/CNAE** — confirmar qual(is) da lista é(são) permitida(s) exatamente (Portal ou Sala MEI).
 2. Só **usado** ou também **produto novo**? (muda a escolha de CNAE)
@@ -245,3 +284,4 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 - **RS:** Portal do Estado do RS (estado.rs.gov.br/mei); Decreto nº 57.789 (IE automática para MEI); SEFAZ-RS (NFA-e / NFF; dispensa de emissão).
 - **Canoas:** Prefeitura de Canoas — Sala MEI / Sala do Empreendedor (SMDEI, Rua Dr. Barcelos, 969).
 - CGSIM Resolução nº 59/2020 (dispensa de alvará/licença para MEI).
+- **CPF:** gov.br / Portal do Empreendedor — Perguntas frequentes MEI ("Não existem impedimentos… com restrição cadastral…"); Receita Federal — "Comprovante de Situação Cadastral no CPF"; Código Penal Art. 299 (falsidade ideológica); Lei nº 8.137/90 (crimes contra a ordem tributária).
