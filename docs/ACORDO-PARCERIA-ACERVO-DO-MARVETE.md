@@ -68,15 +68,15 @@ A operação roda **sob a MEI do TITULAR**. O(A) PARCEIRO(A) atua na curadoria, 
 
 **Definição:** "resultado líquido" = total recebido das vendas **menos** os custos do negócio (DAS, taxas de pagamento/marketplace, frete não repassado, embalagem, domínio e demais despesas da seção 6).
 
-**Modelo escolhido: 2 (Repasse do acervo primeiro).** Preencham os percentuais e o valor-base:
+**Modelo escolhido: 2 (Repasse do acervo primeiro).** Falta apenas preencher o valor-base do acervo:
 
 **☐ Modelo 1 — Sociedade igual (mais simples)** — *(não utilizada nesta parceria)*
 > O resultado líquido é dividido em **___%** para o TITULAR e **___%** para o PARCEIRO(A).
 > *Sugestão padrão:* **50% / 50%**, adequado quando **os dois trabalham em esforço parecido**.
 
 **☑ Modelo 2 — Repasse do acervo primeiro (protege quem trouxe o estoque)** — **ESCOLHIDO ✅**
-> 1º) Do resultado líquido, devolve-se ao **Matheus** (dono do acervo) o **valor-base do estoque** acordado em **R$ __________** *(sugestão: valor de avaliação do acervo — ex.: R$ 40.000)*;
-> 2º) o que sobrar é dividido em **___%** para o TITULAR (**Andressa**) e **___%** para o PARCEIRO(A) (**Matheus**) *(sugestão: 50% / 50%)*.
+> 1º) Do resultado líquido, devolve-se ao **Matheus** (dono do acervo) o **valor-base do estoque** acordado em **R$ __________** *(a definir — preencher na assinatura)*;
+> 2º) o que sobrar é dividido em **50%** para o TITULAR (**Andressa**) e **50%** para o PARCEIRO(A) (**Matheus**).
 > *Por quê:* o acervo é de **um** de vocês; sem isso, o dono "divide" o próprio patrimônio. Este modelo primeiro recompõe o valor e só então divide o ganho.
 
 > 📌 **Regra de ouro:** combinem **por escrito** também **com que frequência** se paga (ex.: mensal), **como** se paga (Pix) e **de onde** sai o dinheiro (conta PJ do TITULAR, após reservar o DAS e as despesas).
