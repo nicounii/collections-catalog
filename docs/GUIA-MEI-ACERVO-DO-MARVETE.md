@@ -4,7 +4,7 @@
 **Objetivo:** abrir e operar uma MEI para vender o acervo em vários canais (site próprio, Instagram, Facebook, Mercado Livre, OLX, Enjoei, Shopee etc.)
 **Local:** **Canoas / RS**
 **Data:** 11/10/2026
-**Status:** revisado com o recorte de **Rio Grande do Sul / Canoas**. Único ponto em aberto: confirmar a **ocupação/CNAE** no Portal do Empreendedor (⚠️ VERIFICAR).
+**Status:** revisado com o recorte de **Rio Grande do Sul / Canoas**. **Titular: Andressa.** Ocupação/CNAE **recomendada na seção 7** (principal **4785-7/99**) — confirmar na Sala MEI no ato da abertura.
 
 > ⚠️ **Aviso honesto:** guia prático, não é aconselhamento jurídico/contábil. Antes de decisões definitivas, confirme com um **contador**. Valores e regras são de 2026 e mudam.
 
@@ -17,7 +17,8 @@
 | Enquadramento | **1 MEI agora → LTDA depois** (se o negócio crescer) |
 | Local | **Canoas / RS** |
 | Faturamento 1º ano (estimado) | **Até R$ 40 mil** → **folga confortável** no teto de R$ 81 mil |
-| Titular | a definir entre vocês (ver seção 3) |
+| Titular | **Andressa Corrêa Teixeira** (ver Acordo de Parceria) |
+| Ocupação (principal) | **Comerciante de Artigos Usados Independente — CNAE 4785-7/99** (ver seção 7) |
 | CPF | **negativação (nome sujo) não impede** a MEI; basta o CPF estar **regular na Receita** (ver seção 5) |
 
 ---
@@ -143,20 +144,31 @@ Ou seja: se o problema for **só negativação**, pode **abrir a MEI normalmente
 
 ---
 
-## 7. Ocupação / CNAE — o ponto que precisa de atenção ⚠️
+## 7. Ocupação / CNAE — recomendação
 
-A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista oficial** (Anexo XI, Res. CGSN 140/2018). Candidatos a investigar (⚠️ **confirmar um a um** no Portal, buscando pelo **nome da ocupação**):
+A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista oficial** (Anexo XI, Res. CGSN 140/2018), e você registra **pelo nome da ocupação**, não pelo código. Regras:
 
-| Ocupação (nome popular) | CNAE aproximado | Combina com |
+- **1 ocupação principal + até 15 secundárias** (16 no total); não pode repetir o mesmo CNAE.
+- O teto de **R$ 81 mil/ano soma todas** as ocupações — não há limite por CNAE.
+
+### Recomendação
+
+**Principal — "Comerciante de Artigos Usados Independente" (CNAE 4785-7/99).**
+
+É o **balde mais amplo** e o que melhor representa o negócio: o acervo é **usado/herdado**. Essa ocupação cobre, por definição (descrição oficial do CNAE no IBGE): *"livros e revistas usados"*, *"moedas e selos de coleção (numismática/filatelia)"* e *"outros artigos usados"* — ou seja, **HQs, mangás, livros, guias, cards e colecionáveis usados entram todos aqui**.
+
+**Secundárias sugeridas** (opcionais — só para cobrir **itens novos** e sortimento):
+
+| Ocupação (nome exato no Portal) | CNAE | Cobre |
 |---|---|---|
-| Antiquário(a) independente | 4785-7/01 | peças antigas/colecionáveis |
-| Comerciante de artigos usados | 4785-7/99 | usado em geral |
-| Lojista de variedades independente | 4713-0/02 | sortimento misto |
-| Comerciante de livros | 4761-0/03 | HQs, mangás, livros |
-| Comerciante de brinquedos/artigos recreativos | 4763-6/02 | action figures |
-| Comerciante de artigos de uso pessoal e doméstico | 4759-8/99 | itens variados |
+| Antiquário(a) Independente | 4785-7/01 | peças antigas/vintage vendidas como antiguidade |
+| Livreiro(a) Independente | 4761-0/01 | livros **novos**/lacrados |
+| Comerciante de Miudezas e Quinquilharias Independente | 4713-0/02 | lojas de variedades (sortimento misto) |
+| Comerciante de Artigos de Cutelaria Independente | 4759-8/99 | outros artigos de uso pessoal e doméstico (novos, variados) |
 
-**O que fazer:** escolha **1 principal** (o que representa o grosso das vendas) + **secundárias** que cubram o resto (livros, brinquedos, usados). Na dúvida, **pergunte na Sala MEI de Canoas ou a um contador** — escolher errado pode gerar problema fiscal depois.
+> ⚠️ **Correção importante:** **não** existe ocupação MEI limpa de "brinquedos/action figures". O CNAE **4763-6/02** no MEI chama-se **"Comerciante de Artigos Esportivos"** (não brinquedos). Como as figuras/bonecos do acervo são **usados**, eles entram naturalmente na principal (**4785-7/99**). Se comprarem **novos**, o encaixe mais seguro é **4713-0/02** (variedades) — confirmem na Sala MEI.
+
+**O que fazer:** no Portal, escolha a **principal 4785-7/99** e marque só as secundárias que fizerem sentido (as de novo/variedade). Na dúvida, **pergunte na Sala MEI de Canoas** — escolher errado pode gerar problema fiscal depois.
 
 *Nota:* a **Tabela A** do Anexo XI (limite R$ 81 mil/ano) cobre comércio/serviços comuns — é o caso de vocês. A Tabela B (limite maior) é essencialmente transporte de cargas.
 
@@ -252,9 +264,9 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 
 ## 14. Checklist desta semana
 
-- [ ] **Decidir quem** será o titular.
+- [x] **Decidir quem** será o titular. → **Andressa**
 - [ ] Ter conta **gov.br Prata/Ouro**.
-- [ ] Escolher a **ocupação/CNAE** (Anexo XI) — confirmar no Portal ou na Sala MEI.
+- [x] Escolher a **ocupação/CNAE**. → principal **4785-7/99** + secundárias (seção 7); confirmar na Sala MEI.
 - [ ] **Abrir a MEI** (15 min) e salvar o **CCMEI** — ou ir à **Sala MEI (Rua Dr. Barcelos, 969, Centro)**.
 - [ ] **Emitir e pagar o 1º DAS**.
 - [ ] Abrir **conta PJ**.
@@ -267,9 +279,9 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 
 ## 15. Ainda em aberto (para fechar 100%)
 
-1. **Ocupação/CNAE** — confirmar qual(is) da lista é(são) permitida(s) exatamente (Portal ou Sala MEI).
-2. Só **usado** ou também **produto novo**? (muda a escolha de CNAE)
-3. **Titular** — decisão de vocês.
+1. **Ocupação/CNAE** — ✅ recomendação definida na **seção 7** (principal **4785-7/99**). Confirmar na Sala MEI no ato da abertura.
+2. Só **usado** ou também **produto novo**? — define se marcam as secundárias de novo/variedade (seção 7).
+3. **Titular** — ✅ **Andressa** (ver Acordo de Parceria).
 4. (Site) número de **WhatsApp** real.
 
 ---
@@ -280,7 +292,7 @@ A MEI **não pode escolher qualquer CNAE**: valem só as **ocupações da lista 
 - Receita Federal — "MEI: atualização de valores devidos em 2026" (INSS R$ 81,05; ICMS R$ 1,00; salário mínimo R$ 1.621,00).
 - Agência Sebrae / Times Brasil — DAS 2026 (R$ 82,05 / R$ 86,05 / R$ 87,05).
 - Câmara dos Deputados — PLP 186/2026 (tramitação; não aprovado).
-- Resolução CGSN nº 140/2018, Anexo XI (ocupações permitidas).
+- Resolução CGSN nº 140/2018, Anexo XI (ocupações permitidas); Portal do Empreendedor (gov.br) — "Ocupações Permitidas" e FAQ "O MEI pode ter mais de uma ocupação?" (**1 principal + até 15 secundárias**); IBGE/Concla — descrição do CNAE **4785-7/99** (livros/revistas usados, numismática, filatelia).
 - **RS:** Portal do Estado do RS (estado.rs.gov.br/mei); Decreto nº 57.789 (IE automática para MEI); SEFAZ-RS (NFA-e / NFF; dispensa de emissão).
 - **Canoas:** Prefeitura de Canoas — Sala MEI / Sala do Empreendedor (SMDEI, Rua Dr. Barcelos, 969).
 - CGSIM Resolução nº 59/2020 (dispensa de alvará/licença para MEI).
