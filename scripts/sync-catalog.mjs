@@ -19,6 +19,7 @@
 import { writeFileSync, copyFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { sortCatalog } from '../src/lib/catalog-sort.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const outFile = join(root, 'src/data/products.generated.json');
@@ -98,6 +99,6 @@ if (all.length === 0 && isProd) {
   process.exit(1);
 }
 
-all.sort((a, b) => String(a.id).localeCompare(String(b.id), undefined, { numeric: true }));
-writeFileSync(outFile, `${JSON.stringify(all, null, 2)}\n`, 'utf8');
+const sorted = sortCatalog(all);
+writeFileSync(outFile, `${JSON.stringify(sorted, null, 2)}\n`, 'utf8');
 console.log(`[sync-catalog] wrote ${all.length} items → src/data/products.generated.json`);
