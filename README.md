@@ -62,25 +62,19 @@ The build syncs them into a generated JSON file; sold items are filtered out at 
 
 ---
 
-## Listing SOP (≤60s per item, from a phone)
+## Listing & Admin (`/admin`)
 
-1. Photograph the item (good light, plain background, show flaws).
-2. Upload to Cloudinary via the restricted preset → copy the delivery URL.
-3. In the Airtable `Catalog` table, click **+** to add a row.
-4. Fill: `title`, `category`, `price`, `condition`, `image_url` (+ `note` for flaws/edition).
-5. Set `status = available`. Done — it appears on the next build.
-
-Full checklist and field reference: `docs/` (Task 5).
+- **Web Admin UI (`/admin`):** A secure, password/OTP-protected mobile-first web interface (`https://<domain>/admin`) protected by Cloudflare Access. Allows operators to upload photos (via Cloudinary signed upload), fill item fields (including optional **`rank`** for custom sorting and **featured** flags), and instantly trigger a Cloudflare Pages rebuild via Deploy Hook.
+- **Airtable Fallback:** Airtable remains the single source of truth; rows can also be managed directly in the Airtable app.
+- **Detailed Guides:** See `docs/admin.md` for admin operation, `docs/deploy.md` for Cloudflare Access and Deploy Hook setup, and `docs/listing-sop.md` for the listing checklist.
 
 ---
 
 ## Security rules
 
-- **No secrets in client code.** `AIRTABLE_TOKEN`, `MP_ACCESS_TOKEN`, and `MP_WEBHOOK_SECRET`
-  are build/server-time only — never prefix them with `VITE_`.
-- **Cloudinary uploads use a restricted/signed preset.** Never an open unsigned preset.
-- **Payment webhook verifies `x-signature` / `x-request-id` HMAC** against `MP_WEBHOOK_SECRET`
-  and re-fetches the payment before trusting it (Task 6B).
+- **No secrets in client code.** `AIRTABLE_TOKEN`, `MP_ACCESS_TOKEN`, `MP_WEBHOOK_SECRET`, `CLOUDINARY_API_SECRET`, and `DEPLOY_HOOK_URL` are server/build-time only — never prefix them with `VITE_`.
+- **Cloudinary uploads use signed signatures.** The `/api/admin/sign-upload` endpoint generates secure timed signatures using `CLOUDINARY_API_SECRET` without exposing secrets to the client.
+- **Admin routes are secured by Cloudflare Access.** Both `/admin` and `/api/admin` must be protected by Cloudflare Zero Trust Access policies (email/OTP) to ensure unauthorized callers cannot invoke admin API endpoints.
 
 ---
 

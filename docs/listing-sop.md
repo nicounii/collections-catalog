@@ -1,9 +1,8 @@
 # Listing SOP — Phone-First (≤60s per item)
 
-The Airtable app **is** the admin. There is no in-app admin form in the storefront;
-every listing happens on your phone inside Airtable, and the next build publishes it.
+The `/admin` web interface (`https://<domain>/admin`) is available for adding and managing listings directly from your phone or browser (with Cloudflare Access authentication). Alternatively, the Airtable mobile app can be used as a direct fallback.
 
-**Flow:** photograph → Cloudinary upload → Airtable row → 5 required fields → publish.
+**Flow:** photograph → `/admin` upload & form → Airtable row + auto-deploy (or direct Airtable entry).
 
 ---
 
@@ -109,8 +108,8 @@ Livros de Coleção
 
 ---
 
-## Deferred (not built now)
+## Admin Interface & Airtable Fallback
 
-The optional **restricted-upload form** (a small web form that uploads photos to
-Cloudinary and writes the Airtable row for you) is **deferred** — not built in
-this phase. Until then, the Airtable app + Cloudinary upload page is the admin.
+The new `/admin` web application provides a streamlined mobile-first form for uploading photos, filling item fields, setting ranks/featured flags, and automatically triggering site publishes. 
+
+If preferred or as a fallback, you can still manage inventory directly inside the Airtable app (`Catalog` table). For full details on the web admin flow, see `docs/admin.md`.

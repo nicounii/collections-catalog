@@ -44,29 +44,45 @@ If `AIRTABLE_TOKEN`/`AIRTABLE_BASE_ID` are **absent**, the build falls back to
 or a production sync returns **0 items**, the build **fails** (exit `1`) — see the
 fail-loud policy in `README.md`.
 
-### Server-time (Task 6B — webhook, once built)
+### Server-time (Admin flow & Webhook)
 
 | Variable | Scope | Notes |
 |----------|-------|-------|
 | `MP_ACCESS_TOKEN` | secret | Mercado Pago access token (server only) |
 | `MP_WEBHOOK_SECRET` | secret | HMAC secret for `x-signature` verification |
+| `CLOUDINARY_API_KEY` | plain | Cloudinary API key for signed upload signatures |
+| `CLOUDINARY_API_SECRET` | secret | Cloudinary API secret for signed upload signatures |
+| `DEPLOY_HOOK_URL` | secret | Cloudflare Pages Deploy Hook URL triggered on listing create/patch |
+| `ENVIRONMENT` | plain | `production` |
 
-Set these with the dashboard, or:
+Set these via the Cloudflare Pages dashboard or with Wrangler:
 
 ```bash
 npx wrangler pages secret put MP_ACCESS_TOKEN --project-name acervo-do-marvete
 npx wrangler pages secret put MP_WEBHOOK_SECRET --project-name acervo-do-marvete
+npx wrangler pages secret put CLOUDINARY_API_SECRET --project-name acervo-do-marvete
+npx wrangler pages secret put DEPLOY_HOOK_URL --project-name acervo-do-marvete
 ```
-
-### Not needed at runtime
-
-`CLOUDINARY_CLOUD_NAME` / `CLOUDINARY_UPLOAD_PRESET` are **operator reference only** —
-image delivery URLs come from Airtable (`image_url`), so the app never reads them.
-No `VITE_`-prefixed variables exist: nothing secret is exposed to the browser bundle.
 
 ---
 
-## 3. Domain — Registro.br `.com.br` (OPERATOR, one-time)
+## 3. Server-time (admin flow) & Cloudflare Access (OPERATOR)
+
+### Deploy Hook Setup
+To allow the `/admin` UI and API endpoints to automatically trigger a site rebuild and publish when you add or update listings:
+1. In the Cloudflare dashboard, go to **Workers & Pages** → your Pages project → **Settings** → **Builds & deployments** → **Deploy hooks**.
+2. Click **Add deploy hook**, name it (e.g. `Admin Publish Hook`), select the branch (`main`), and click **Save**.
+3. Copy the generated URL and store it as a secret environment variable:
+   ```bash
+   npx wrangler pages secret put DEPLOY_HOOK_URL --project-name acervo-do-marvete
+   ```
+
+### Cloudflare Access (Authentication)
+Because the built-in admin middleware (`_middleware.js`) relies on Cloudflare Access to authenticate operators via email/OTP, you must secure the admin routes in **Cloudflare Zero Trust**:
+1. In Cloudflare Zero Trust, go to **Access** → **Applications** → **Add an application** → **Self-hosted**.
+2. **App 1 (UI):** Set Application domain to `<your-domain>/admin` (or `*.your-domain.com/admin`), set Session Duration, and add an Access Policy requiring your operator email address (e.g. via One-Time PIN / OTP).
+3. **App 2 (API):** Set Application domain to `<your-domain>/api/admin` (or `*.your-domain.com/api/admin`), with the **same** email/OTP policy.
+   > **v1 Limitation Note:** Cloudflare Access **must** actually cover `/api/admin` in addition to `/admin`. The in-app API routes do not perform JWT signature verification themselves; they rely entirely on Cloudflare Access headers (`Cf-Access-Authenticated-User-Email`) being present. If `/api/admin` is not protected by Access, unauthorized API requests could reach the endpoints.
 
 1. Register the domain at **Registro.br** (e.g. `acervodomarvete.com.br`, ~R$40/year).
 2. In Registro.br, set the **DNS servers** to the two Cloudflare nameservers shown in
