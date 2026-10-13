@@ -57,6 +57,7 @@ export default function CategoryRail({ items, eyebrow, title, variant = 'dark' }
           <Reveal delay={100}>
             <div className="flex items-center gap-3">
               <button
+                type="button"
                 onClick={() => nudge(-1)}
                 className={`grid h-12 w-12 place-items-center rounded-full transition-colors ${
                   dark ? 'text-on-dark hover:bg-white/10' : 'text-ink hover:bg-ink/5'
@@ -67,6 +68,7 @@ export default function CategoryRail({ items, eyebrow, title, variant = 'dark' }
                 <Icon.Chevron className="h-5 w-5 rotate-180" {...stroke} />
               </button>
               <button
+                type="button"
                 onClick={() => nudge(1)}
                 className={`grid h-12 w-12 place-items-center rounded-full transition-colors ${
                   dark ? 'text-on-dark hover:bg-white/10' : 'text-ink hover:bg-ink/5'
@@ -106,12 +108,13 @@ export default function CategoryRail({ items, eyebrow, title, variant = 'dark' }
               />
 
               <button
+                type="button"
+                aria-label={`Adicionar ${p.title} ao carrinho`}
                 onClick={() => add(p.id)}
                 className={`absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full transition-colors ${
                   dark ? 'text-on-dark hover:bg-white/20' : 'text-ink hover:bg-ink/10'
                 }`}
                 style={{ background: dark ? 'rgba(10,10,12,0.55)' : 'rgba(255,255,255,0.75)' }}
-                aria-label={`Adicionar ${p.title}`}
               >
                 <Icon.Plus className="h-4 w-4" {...stroke} strokeWidth={2.4} />
               </button>
@@ -138,6 +141,7 @@ export default function CategoryRail({ items, eyebrow, title, variant = 'dark' }
         <div className="mt-6 flex items-center justify-center gap-2">
           {Array.from({ length: pages }).map((_, i) => (
             <button
+              type="button"
               key={i}
               onClick={() => {
                 const el = railRef.current;

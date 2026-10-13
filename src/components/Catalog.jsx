@@ -85,10 +85,11 @@ export default function Catalog() {
               <input
                 id="lot-search"
                 type="search"
+                autoComplete="off"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Buscar por título, editora ou categoria…"
-                className="h-[52px] w-full rounded-full border border-hair-light bg-white pl-11 pr-4 text-[1rem] text-ink placeholder:text-mute-light focus:border-primary focus:outline-none"
+                className="h-[52px] w-full rounded-full border border-hair-light bg-white pl-11 pr-4 text-[1rem] text-ink placeholder:text-mute-light focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
               />
             </label>
 
@@ -101,7 +102,7 @@ export default function Catalog() {
                 id="sort"
                 value={sort}
                 onChange={(e) => setSort(e.target.value)}
-                className="h-[42px] rounded-full border border-hair-light bg-white px-4 text-[0.88rem] text-ink focus:border-primary focus:outline-none"
+                className="h-[42px] rounded-full border border-hair-light bg-white px-4 text-[0.88rem] text-ink focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
               >
                 {SORTS.map((s) => (
                   <option key={s.id} value={s.id}>
@@ -118,6 +119,7 @@ export default function Catalog() {
               <button
                 key={c}
                 aria-pressed={category === c}
+                aria-label={`Filtrar por categoria ${c}`}
                 onClick={() => setCategory(c)}
                 className="chip"
               >
@@ -140,6 +142,7 @@ export default function Catalog() {
           </p>
           {(query || category !== 'Todos' || sort !== 'curated') && (
             <button
+              aria-label="Limpar filtros"
               onClick={() => {
                 setQuery('');
                 setCategory('Todos');
@@ -169,6 +172,7 @@ export default function Catalog() {
           >
             <button
               type="button"
+              aria-label="Página anterior"
               onClick={() => goToPage(Math.max(1, currentPage - 1))}
               disabled={currentPage <= 1}
               className="btn btn-outline-light btn-sm disabled:cursor-not-allowed disabled:opacity-40"
@@ -180,6 +184,7 @@ export default function Catalog() {
             </span>
             <button
               type="button"
+              aria-label="Próxima página"
               onClick={() => goToPage(Math.min(totalPages, currentPage + 1))}
               disabled={currentPage >= totalPages}
               className="btn btn-outline-light btn-sm disabled:cursor-not-allowed disabled:opacity-40"

@@ -267,7 +267,7 @@
     color: var(--color-ink);
     background: rgba(255, 255, 255, 0.5);
     border: 1px solid var(--color-hair-light);
-    transition: all 0.16s var(--ease-snap);
+    transition: border-color 0.16s var(--ease-snap), background-color 0.16s var(--ease-snap), color 0.16s var(--ease-snap);
   }
   .chip:hover {
     border-color: var(--color-ink);

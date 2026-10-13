@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { CartProvider } from './context/CartContext.jsx';
 import Announcement from './components/Announcement.jsx';
 import Nav from './components/Nav.jsx';
@@ -12,12 +12,13 @@ import Journal from './components/Journal.jsx';
 import Footer from './components/Footer.jsx';
 import CartDrawer from './components/CartDrawer.jsx';
 import DocPage from './pages/DocPage.jsx';
-import AdminPage from './pages/AdminPage.jsx';
 import { useHashRoute } from './lib/useHashRoute.js';
 import { byCategory } from './data/products.js';
 import faq from '../docs/faq.md?raw';
 import conditionGuide from '../docs/condition-guide.md?raw';
 import shippingReturns from '../docs/shipping-returns.md?raw';
+
+const AdminPage = lazy(() => import('./pages/AdminPage.jsx'));
 
 // Trust docs are surfaced as hash routes so they get shareable URLs.
 const DOCS = {
@@ -72,7 +73,11 @@ export default function App() {
         const isAdmin =
           window.location.pathname.replace(/\/+$/, '') === '/admin' ||
           hash === '#/admin';
-        if (isAdmin) return <AdminPage />;
+        if (isAdmin) return (
+          <Suspense fallback={<div className="min-h-screen bg-ink" />}>
+            <AdminPage />
+          </Suspense>
+        );
         return null;
       })() || (
         <>

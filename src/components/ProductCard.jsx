@@ -79,6 +79,7 @@ export default function ProductCard({ product }) {
               </a>
             ) : (
               <button
+                type="button"
                 onClick={() => add(product.id)}
                 className="btn btn-commerce btn-sm"
                 aria-label={`Adicionar ${product.title} ao carrinho`}

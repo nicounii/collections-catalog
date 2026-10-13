@@ -57,7 +57,7 @@ export default function Vault() {
                     Ver no catálogo
                     <Icon.Arrow className="h-[1.1rem] w-[1.1rem]" {...stroke} />
                   </a>
-                  <button onClick={() => add(lot.id)} className="btn btn-commerce">
+                  <button type="button" aria-label={`Adicionar ${lot.title} ao carrinho`} onClick={() => add(lot.id)} className="btn btn-commerce">
                     <Icon.Bag className="h-[1.1rem] w-[1.1rem]" {...stroke} />
                     Adicionar
                   </button>

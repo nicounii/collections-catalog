@@ -67,6 +67,7 @@ export default function Nav() {
         {/* left */}
         <div className="flex items-center gap-3">
           <button
+            type="button"
             onClick={() => setMobile(true)}
             className="grid h-11 w-11 place-items-center rounded-full text-on-dark hover:bg-white/5 lg:hidden"
             aria-label="Abrir menu"
@@ -105,6 +106,7 @@ export default function Nav() {
         {/* right cluster */}
         <div className="flex items-center gap-1">
           <button
+            type="button"
             onClick={focusSearch}
             className="grid h-11 w-11 place-items-center rounded-full text-on-dark hover:bg-white/5"
             aria-label="Buscar no catálogo"
@@ -112,12 +114,14 @@ export default function Nav() {
             <Icon.Search className="h-[1.35rem] w-[1.35rem]" {...stroke} />
           </button>
           <button
+            type="button"
             className="hidden h-11 w-11 place-items-center rounded-full text-on-dark hover:bg-white/5 sm:grid"
             aria-label="Favoritos"
           >
             <Icon.Heart className="h-[1.35rem] w-[1.35rem]" {...stroke} />
           </button>
           <button
+            type="button"
             onClick={() => setOpen(true)}
             className="relative flex h-11 items-center gap-2 rounded-full pl-3 pr-4 text-on-dark hover:bg-white/5"
             aria-label={`Carrinho, ${count} itens`}
@@ -151,7 +155,12 @@ export default function Nav() {
       {/* mobile drawer */}
       {mobile && (
         <>
-          <div className="fixed inset-0 top-[74px] z-40 bg-black/60 fade-in" onClick={() => setMobile(false)} />
+          <button
+            type="button"
+            aria-label="Fechar menu"
+            className="fixed inset-0 top-[74px] z-40 bg-black/60 fade-in"
+            onClick={() => setMobile(false)}
+          />
           <div className="fixed left-0 top-[74px] z-50 h-[calc(100dvh-74px)] w-[88%] max-w-sm border-r border-hair-dark bg-ink-deep drawer-in">
             <div className="flex h-full flex-col p-6">
               <span className="eyebrow mb-5 text-accent/80">Acervo do Marvete</span>

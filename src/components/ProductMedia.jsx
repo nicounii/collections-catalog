@@ -45,6 +45,8 @@ export function ProductMedia({
           srcSet={srcSet}
           sizes={sizes}
           alt={product.imageAlt || product.title}
+          width={640}
+          height={640}
           loading="lazy"
           decoding="async"
           className={`h-full w-full object-cover ${imgClassName}`}

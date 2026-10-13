@@ -35,7 +35,7 @@ export default function CartDrawer() {
       />
 
       <aside
-        className={`fixed right-0 top-0 z-[70] flex h-full w-full max-w-[27rem] flex-col bg-parchment text-ink shadow-lift transition-transform duration-[400ms] ease-fluid ${
+        className={`fixed right-0 top-0 z-[70] flex h-full w-full max-w-[27rem] flex-col bg-parchment text-ink shadow-lift transition-transform duration-[400ms] ease-fluid overscroll-contain ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
         role="dialog"
@@ -50,6 +50,7 @@ export default function CartDrawer() {
             </p>
           </div>
           <button
+            type="button"
             onClick={() => setOpen(false)}
             className="grid h-11 w-11 place-items-center rounded-full text-ink transition-colors hover:bg-ink/5"
             aria-label="Fechar carrinho"
@@ -70,7 +71,7 @@ export default function CartDrawer() {
             <p className="max-w-xs text-[0.92rem] text-body-light">
               Adicione produtos ao carrinho para continuar.
             </p>
-            <button onClick={() => setOpen(false)} className="btn btn-outline-light mt-2">
+            <button type="button" onClick={() => setOpen(false)} className="btn btn-outline-light mt-2">
               Explorar catálogo
             </button>
           </div>
@@ -97,6 +98,7 @@ export default function CartDrawer() {
                             </h3>
                           </div>
                           <button
+                            type="button"
                             onClick={() => remove(line.id)}
                             className="grid h-11 w-11 shrink-0 place-items-center rounded-full text-mute-light transition-colors hover:text-warning"
                             aria-label={`Remover ${p.title}`}
@@ -108,6 +110,7 @@ export default function CartDrawer() {
                         <div className="mt-auto flex items-center justify-between pt-3">
                           <div className="inline-flex items-center rounded-full border border-hair-light bg-white">
                             <button
+                              type="button"
                               onClick={() => setQty(line.id, line.qty - 1)}
                               className="grid h-11 w-11 place-items-center rounded-full text-ink hover:bg-ink/5"
                               aria-label="Diminuir quantidade"
@@ -116,6 +119,7 @@ export default function CartDrawer() {
                             </button>
                             <span className="w-7 text-center font-mono text-[0.9rem] tabular-nums">{line.qty}</span>
                             <button
+                              type="button"
                               onClick={() => setQty(line.id, line.qty + 1)}
                               className="grid h-11 w-11 place-items-center rounded-full text-ink hover:bg-ink/5"
                               aria-label="Aumentar quantidade"
@@ -147,6 +151,7 @@ export default function CartDrawer() {
               </ul>
 
               <button
+                type="button"
                 onClick={clear}
                 className="mt-6 text-[0.82rem] font-medium text-mute-light underline decoration-hair-light underline-offset-4 hover:text-ink"
               >
@@ -177,8 +182,9 @@ export default function CartDrawer() {
                 Negociar pelo WhatsApp
               </a>
               <button
+                type="button"
                 onClick={() => setOpen(false)}
-                className="btn btn-outline-light mt-3 w-full justify-center"
+                className="mt-3 text-center text-[0.85rem] font-medium text-mute-light underline decoration-hair-light underline-offset-4 hover:text-ink"
               >
                 Continuar comprando
               </button>

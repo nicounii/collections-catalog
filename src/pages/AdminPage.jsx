@@ -160,17 +160,17 @@ export default function AdminPage() {
 
           <div>
             <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px' }}>Título *</label>
-            <input type="text" required value={title} onChange={(e) => setTitle(e.target.value)} style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }} />
+            <input type="text" required autoComplete="off" value={title} onChange={(e) => setTitle(e.target.value)} style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }} />
           </div>
 
           <div style={{ display: 'flex', gap: '16px' }}>
             <div style={{ flex: 1 }}>
               <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px' }}>Preço (R$) *</label>
-              <input type="number" step="0.01" required value={price} onChange={(e) => setPrice(e.target.value)} style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }} />
+              <input type="number" step="0.01" required autoComplete="off" value={price} onChange={(e) => setPrice(e.target.value)} style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }} />
             </div>
             <div style={{ flex: 1 }}>
               <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px' }}>Categoria *</label>
-              <select value={category} onChange={(e) => setCategory(e.target.value)} style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }}>
+              <select autoComplete="off" value={category} onChange={(e) => setCategory(e.target.value)} style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }}>
                 {CATEGORY_OPTIONS.map((c) => (
                   <option key={c} value={c}>{c}</option>
                 ))}
@@ -181,11 +181,11 @@ export default function AdminPage() {
           <div style={{ display: 'flex', gap: '16px' }}>
             <div style={{ flex: 1 }}>
               <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px' }}>Condição</label>
-              <input type="text" value={condition} onChange={(e) => setCondition(e.target.value)} placeholder="Ex: Perfeito, Bom" style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }} />
+              <input type="text" autoComplete="off" value={condition} onChange={(e) => setCondition(e.target.value)} placeholder="Ex: Perfeito, Bom" style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }} />
             </div>
             <div style={{ flex: 1 }}>
               <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px' }}>Fabricante / Maker</label>
-              <input type="text" value={maker} onChange={(e) => setMaker(e.target.value)} style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }} />
+              <input type="text" autoComplete="off" value={maker} onChange={(e) => setMaker(e.target.value)} style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }} />
             </div>
           </div>
 
@@ -197,7 +197,7 @@ export default function AdminPage() {
           <div style={{ display: 'flex', gap: '16px' }}>
             <div style={{ flex: 1 }}>
               <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px' }}>Glifo (art)</label>
-              <select value={art} onChange={(e) => setArt(e.target.value)} style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }}>
+              <select autoComplete="off" value={art} onChange={(e) => setArt(e.target.value)} style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }}>
                 {GLYPHS.map((g) => (
                   <option key={g} value={g}>{g}</option>
                 ))}
@@ -205,7 +205,7 @@ export default function AdminPage() {
             </div>
             <div style={{ flex: 1 }}>
               <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px' }}>Alt da Imagem</label>
-              <input type="text" value={imageAlt} onChange={(e) => setImageAlt(e.target.value)} style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }} />
+              <input type="text" autoComplete="off" value={imageAlt} onChange={(e) => setImageAlt(e.target.value)} style={{ width: '100%', padding: '10px', fontSize: '16px', boxSizing: 'border-box' }} />
             </div>
           </div>
 
@@ -216,7 +216,7 @@ export default function AdminPage() {
             </label>
           </div>
 
-          <button type="submit" disabled={busy} style={{ background: '#d32f2f', color: '#fff', border: 'none', padding: '14px', fontSize: '18px', fontWeight: 'bold', borderRadius: '4px', cursor: 'pointer' }}>
+          <button type="submit" aria-label="Adicionar item" disabled={busy} style={{ background: '#d32f2f', color: '#fff', border: 'none', padding: '14px', fontSize: '18px', fontWeight: 'bold', borderRadius: '4px', cursor: 'pointer' }}>
             {busy ? 'Salvando...' : 'Adicionar Item'}
           </button>
         </form>
@@ -270,11 +270,11 @@ export default function AdminPage() {
                         Destaque
                       </label>
 
-                      <button type="button" onClick={() => handlePinTop(item)} disabled={busy} style={{ padding: '4px 8px', fontSize: '12px', cursor: 'pointer' }}>
+                      <button type="button" aria-label="Pinar no topo" onClick={() => handlePinTop(item)} disabled={busy} style={{ padding: '4px 8px', fontSize: '12px', cursor: 'pointer' }}>
                         Pinar no topo
                       </button>
 
-                      <button type="button" onClick={() => handleSendBottom(item)} disabled={busy} style={{ padding: '4px 8px', fontSize: '12px', cursor: 'pointer' }}>
+                      <button type="button" aria-label="Enviar para o fim" onClick={() => handleSendBottom(item)} disabled={busy} style={{ padding: '4px 8px', fontSize: '12px', cursor: 'pointer' }}>
                         Enviar para o fim
                       </button>
                     </div>
