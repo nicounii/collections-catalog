@@ -347,13 +347,12 @@
     {
       "sessionId": "ses_eccd0a489ffeTvGUu50h118cpf",
       "startedAt": "2026-10-13T02:59:05.616Z",
-      "lastActiveAt": "2026-10-13T13:57:01.094Z",
+      "lastActiveAt": "2026-10-13T20:49:01.110Z",
       "agent": "hive-master",
       "sessionKind": "primary",
       "baseAgent": "hive-master",
-      "directivePrompt": "use_skill(\"web-performance-optimization\") to analyze our current project.",
-      "replayDirectivePending": false,
-      "directiveRecoveryState": "consumed"
+      "directivePrompt": "create a simple \"start.sh\" to start our whole application and it's dependencies.",
+      "replayDirectivePending": false
     }
   ]
 }
