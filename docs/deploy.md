@@ -50,8 +50,11 @@ fail-loud policy in `README.md`.
 |----------|-------|-------|
 | `MP_ACCESS_TOKEN` | secret | Mercado Pago access token (server only) |
 | `MP_WEBHOOK_SECRET` | secret | HMAC secret for `x-signature` verification |
+| `CLOUDINARY_CLOUD_NAME` | plain | Cloudinary cloud name (public) |
+| `CLOUDINARY_UPLOAD_PRESET` | plain | Restricted/signed upload preset (optional) |
 | `CLOUDINARY_API_KEY` | plain | Cloudinary API key for signed upload signatures |
 | `CLOUDINARY_API_SECRET` | secret | Cloudinary API secret for signed upload signatures |
+| `CLOUDINARY_FOLDER` | plain | Upload folder (default `sale-catalog`) |
 | `DEPLOY_HOOK_URL` | secret | Cloudflare Pages Deploy Hook URL triggered on listing create/patch |
 | `ENVIRONMENT` | plain | `production` |
 
@@ -83,6 +86,8 @@ Because the built-in admin middleware (`_middleware.js`) relies on Cloudflare Ac
 2. **App 1 (UI):** Set Application domain to `<your-domain>/admin` (or `*.your-domain.com/admin`), set Session Duration, and add an Access Policy requiring your operator email address (e.g. via One-Time PIN / OTP).
 3. **App 2 (API):** Set Application domain to `<your-domain>/api/admin` (or `*.your-domain.com/api/admin`), with the **same** email/OTP policy.
    > **v1 Limitation Note:** Cloudflare Access **must** actually cover `/api/admin` in addition to `/admin`. The in-app API routes do not perform JWT signature verification themselves; they rely entirely on Cloudflare Access headers (`Cf-Access-Authenticated-User-Email`) being present. If `/api/admin` is not protected by Access, unauthorized API requests could reach the endpoints.
+
+### Domain & DNS (Registro.br)
 
 1. Register the domain at **Registro.br** (e.g. `acervodomarvete.com.br`, ~R$40/year).
 2. In Registro.br, set the **DNS servers** to the two Cloudflare nameservers shown in

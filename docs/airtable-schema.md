@@ -24,7 +24,7 @@ produces `src/data/products.generated.json` for the React app.
 | 14 | `order_ref` | Single line text | – | Mercado Pago payment id recorded on sale (Task 6B). |
 | 15 | `rank` | Number | – | Optional numeric rank for custom sorting. Defaults to `0`. Higher numbers sort first. |
 
-**Automatic field (not editable, not one of the 14):** Airtable's **`Created time`**
+**Automatic field (not editable, not one of the 15):** Airtable's **`Created time`**
 is always present; the sync reads it as `added` to back the `oldest` sort (Task 8).
 
 ## Rules

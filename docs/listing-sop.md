@@ -9,11 +9,13 @@ The `/admin` web interface (`https://<domain>/admin`) is available for adding an
 ## The ≤60s checklist
 
 1. **Photograph** the item — good light, plain background, show flaws (see below).
-2. **Upload** to Cloudinary via the restricted preset → copy the delivery URL.
-3. **Airtable app** → open the `Catalog` table → tap **+** to add a row.
-4. **Fill the 5 required fields** (see field-by-field below): `id`, `title`, `category`, `price`, `status`.
-5. **Paste** `image_url` (recommended), add `condition` / `note` (recommended).
-6. **Set `status = available`.** Done — it appears on the next build.
+2. **Open `/admin`** (Cloudflare Access login) → **Foto do Item** → upload the photo.
+3. **Fill the required fields** (`title`, `category`, `price`) and optional `condition` / `note` / `maker` / `image_alt`.
+4. **Adicionar Item** — the row is written to Airtable and the Deploy Hook rebuilds the site (live in ~1–2 min).
+5. **Quick actions** on the list: change `status` / `featured`, or **Pinar no topo** / **Enviar para o fim** to reorder.
+6. Done — it appears on the next build.
+
+> **Airtable fallback:** if `/admin` is unavailable, you can still add rows directly in the Airtable app (see field-by-field below).
 
 ---
 

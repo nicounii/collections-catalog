@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { CATEGORIES } from '../data/products.js';
 import { cldUrl } from '../lib/cloudinary.js';
 import { listListings, createListing, patchListing, signUpload, uploadToCloudinary } from '../lib/adminApi.js';
@@ -31,7 +31,7 @@ export default function AdminPage() {
     try {
       setLoading(true);
       const data = await listListings();
-      setItems(data);
+      setItems(data.items ?? []);
       setError(null);
     } catch (err) {
       setError(err.message);
@@ -46,6 +46,7 @@ export default function AdminPage() {
 
   const handleFileChange = (e) => {
     const f = e.target.files[0];
+    if (preview) URL.revokeObjectURL(preview);
     if (f) {
       setFile(f);
       setPreview(URL.createObjectURL(f));
@@ -81,6 +82,7 @@ export default function AdminPage() {
 
       await createListing(payload);
       // Reset form
+      if (preview) URL.revokeObjectURL(preview);
       setFile(null);
       setPreview(null);
       setTitle('');
@@ -104,8 +106,8 @@ export default function AdminPage() {
     setRepublishing(true);
     setError(null);
     try {
-      const updated = await patchListing(recordId, patch);
-      setItems((prev) => prev.map((item) => (item.id === updated.id || item.recordId === recordId ? updated : item)));
+      const { item } = await patchListing(recordId, patch);
+      setItems((prev) => prev.map((it) => (it.recordId === recordId ? { ...it, ...item } : it)));
     } catch (err) {
       setError(err.message);
     } finally {
