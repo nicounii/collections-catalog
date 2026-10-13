@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Acervo do Marvete — acervo de um único dono: quadrinhos, mangás, action figures, retro gaming e livros de coleção.",
   "scripts": {
+    "test": "node --test",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
