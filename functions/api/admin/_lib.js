@@ -7,6 +7,8 @@ export function json(data, status = 200) {
 
 export function pick(obj, keys) {
   const result = {};
+  if (!obj || typeof obj !== 'object') return result;
+  if (!keys || typeof keys[Symbol.iterator] !== 'function') return result;
   for (const key of keys) {
     if (obj && Object.prototype.hasOwnProperty.call(obj, key)) {
       result[key] = obj[key];
