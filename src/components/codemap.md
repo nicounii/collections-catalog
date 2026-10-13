@@ -1,35 +1,48 @@
 # src/components/
 
 ## Responsibility
-UI components for the Sale Catalog Site. Provides reusable, presentational and container components for product display, cart management, filtering, and layout.
+UI components for the Sale Catalog Site. Provides layout, product display, cart management, filtering, navigation, and content sections.
 
 ## Design Patterns
 - Functional React components with hooks
 - Props-based composition
-- Container/presentational separation (e.g., ProductList manages data via hooks, ProductCard displays data)
+- Container/presentational patterns (Catalog manages filtering/sorting/pagination, ProductCard displays data)
 - Controlled components for search/filter inputs
-- Component composition for layout (Header, Footer)
+- Reusable UI primitives (Reveal for animations, Plate for styling, icons)
+- Drawer pattern for cart (CartDrawer)
 
 ## Key Components
-- **App.jsx**: Root application component. Sets up CartProvider and renders main layout (Header, ProductList, Cart, Footer)
-- **Header.jsx**: Site header with title and cart icon showing item count
-- **Footer.jsx**: Site footer
-- **ProductList.jsx**: Main product listing. Fetches products via useProducts hook, manages search and category filters, renders ProductCard grid
-- **ProductCard.jsx**: Individual product display card showing image, name, price, category, and add to cart button
-- **Cart.jsx**: Shopping cart sidebar/modal showing cart items, quantities, totals, and remove/update actions
-- **CartItem.jsx**: Individual cart line item with quantity controls and remove button
-- **SearchBar.jsx**: Search input for filtering products by name
-- **CategoryFilter.jsx**: Category dropdown/filter for filtering products by category
+- **App.jsx** (in src/): Root app with CartProvider, hash routing, doc pages vs home
+- **Announcement.jsx**: Top announcement bar
+- **Nav.jsx**: Navigation header with links and cart indicator
+- **Hero.jsx**: Hero section
+- **Catalog.jsx**: Main product catalog with search, category filters, sorting, pagination (24 per page). Uses `paginate()` utility
+- **CategoryRail.jsx**: Horizontal scrollable product rail for category sections
+- **Vault.jsx**: Featured/vault section
+- **Heritage.jsx**: About/heritage section
+- **OnTheBlock.jsx**: Featured/auction-like section
+- **Journal.jsx**: Blog/journal posts section
+- **Footer.jsx**: Site footer with links (including FAQ, shipping, conditions via hash routes)
+- **CartDrawer.jsx**: Slide-out cart drawer showing items, quantities, totals
+- **ProductCard.jsx**: Product card with image, title, maker, price, lot, category, negotiation button (WhatsApp)
+- **ProductMedia.jsx**: Product image/media component with Cloudinary optimization via `cldUrl`
+- **CartItem.jsx**: (referenced via CartDrawer) Individual cart line item
+- **SearchBar.jsx**: Search input component
+- **CategoryFilter.jsx**: Category filter component
+- **Reveal.jsx**: Animation wrapper component
+- **Plate.jsx**: Styled container component
+- **icons.jsx**: Icon components (Search, Cart, Arrow, etc.)
 
 ## Data & Control Flow
-1. ProductList reads products from useProducts hook
-2. SearchBar and CategoryFilter update local filter state in ProductList
-3. Filtered products passed to ProductCard components
-4. ProductCard triggers addToCart via CartContext (accessed through useCart hook)
-5. Cart reads cart state from CartContext and renders CartItem components
-6. CartItem triggers updateQuantity/removeFromCart via CartContext
+1. Catalog reads products from `data/products.js`, manages filters/sort/page state
+2. CategoryRail receives filtered items via `byCategory()`
+3. ProductCard receives product data, uses `useCart()` to add to cart, generates WhatsApp link via `waLink()`
+4. ProductMedia optimizes images with `cldUrl()` from `lib/cloudinary.js`
+5. CartDrawer reads cart state from CartContext via `useCart()`, renders cart items
+6. Nav shows cart item count from CartContext
+7. Footer links to hash routes (#/faq, #/condicao, #/envio)
 
 ## Integration Points
 - Consumed by: App.jsx
-- Depends on: src/hooks (useProducts, useCart), src/context (CartContext), src/data (product types via data)
-- Styling: CSS modules/classes as defined in component files
+- Depends on: src/hooks (useCart), src/context (CartContext), src/data (products, byCategory, CATEGORIES), src/lib (paginate, cldUrl, waLink, format)
+- Styling: Tailwind CSS classes

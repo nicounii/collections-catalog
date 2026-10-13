@@ -1,27 +1,30 @@
 # src/hooks/
 
 ## Responsibility
-Custom React hooks providing reusable logic for data fetching and cart operations.
+Custom React hooks providing reusable logic for routing and cart operations.
 
 ## Design Patterns
 - Custom hooks (use* naming convention)
 - Encapsulation of side effects and stateful logic
-- Abstraction over data access and context consumption
+- Abstraction over browser APIs and context consumption
+- SSR-safe patterns with useSyncExternalStore
 
 ## Key Hooks
-- **useProducts.js**: Manages product data fetching and processing
-  - Returns products array from data source
-  - Can be extended for async data fetching
 - **useCart.js**: Convenience hook for consuming CartContext
   - Returns cart context value `{ cart, addToCart, removeFromCart, updateQuantity, clearCart, getCartTotal, getCartItemCount }`
   - Throws error if used outside CartProvider
+- **useProducts.js**: (if present) Manages product data access
+- **useHashRoute.js**: Hash-based routing hook
+  - Uses `useSyncExternalStore` to subscribe to `hashchange` events
+  - Returns current `window.location.hash`
+  - SSR-safe (getServerSnapshot returns empty string)
 
 ## Data & Control Flow
-1. useProducts imports from src/data/products.js and returns products
-2. useCart accesses CartContext via useContext and validates provider existence
+1. useCart accesses CartContext via useContext and validates provider existence
+2. useHashRoute subscribes to hash changes, providing reactive hash value to App.jsx
 3. Components call hooks to get state and actions
 4. Hook state changes propagate to components
 
 ## Integration Points
-- Consumed by: ProductList (useProducts), ProductCard/Cart/CartItem (useCart)
-- Depends on: src/data/products.js, src/context/CartContext.js, React hooks
+- Consumed by: ProductCard/CartDrawer/Nav (useCart), App.jsx (useHashRoute)
+- Depends on: src/context/CartContext.js, React hooks (useContext, useSyncExternalStore)
