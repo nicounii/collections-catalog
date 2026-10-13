@@ -12,6 +12,7 @@ import Journal from './components/Journal.jsx';
 import Footer from './components/Footer.jsx';
 import CartDrawer from './components/CartDrawer.jsx';
 import DocPage from './pages/DocPage.jsx';
+import AdminPage from './pages/AdminPage.jsx';
 import { useHashRoute } from './lib/useHashRoute.js';
 import { byCategory } from './data/products.js';
 import faq from '../docs/faq.md?raw';
@@ -67,11 +68,21 @@ export default function App() {
 
   return (
     <CartProvider>
-      <Announcement />
-      <Nav />
-      {doc ? <DocPage markdown={doc} /> : <Home />}
-      <Footer />
-      <CartDrawer />
+      {(() => {
+        const isAdmin =
+          window.location.pathname.replace(/\/+$/, '') === '/admin' ||
+          hash === '#/admin';
+        if (isAdmin) return <AdminPage />;
+        return null;
+      })() || (
+        <>
+          <Announcement />
+          <Nav />
+          {doc ? <DocPage markdown={doc} /> : <Home />}
+          <Footer />
+          <CartDrawer />
+        </>
+      )}
     </CartProvider>
   );
 }
