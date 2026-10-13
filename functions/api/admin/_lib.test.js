@@ -25,12 +25,19 @@ test('slugify strips diacritics/punctuation and maps ª, º, °', () => {
 });
 
 test('makeUniqueId format and uniqueness', () => {
-  const id1 = makeUniqueId('Action Figure #1', new Set());
-  assert.match(id1, /^[a-z0-9-]+-[a-z0-9]{4}$/);
+  // Pin Date.now so both calls produce the same suffix deterministically.
+  const originalNow = Date.now;
+  Date.now = () => 1234567890;
+  try {
+    const id1 = makeUniqueId('Action Figure #1', new Set());
+    assert.match(id1, /^[a-z0-9-]+-[a-z0-9]{4}$/);
 
-  const existing = new Set([id1]);
-  const id2 = makeUniqueId('Action Figure #1', existing);
-  assert.match(id2, /^[a-z0-9-]+-[a-z0-9]{4}-2$/);
+    const existing = new Set([id1]);
+    const id2 = makeUniqueId('Action Figure #1', existing);
+    assert.match(id2, /^[a-z0-9-]+-[a-z0-9]{4}-2$/);
+  } finally {
+    Date.now = originalNow;
+  }
 });
 
 test('cloudinarySignature is 40-char lowercase hex and cross-checks with node:crypto', async () => {
