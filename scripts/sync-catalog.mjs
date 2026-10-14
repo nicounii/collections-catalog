@@ -16,10 +16,11 @@
 // mp_link→mpLink, order_ref→orderRef, status→status, created/Created time→added.
 // All other fields pass through unchanged.
 
-import { writeFileSync, copyFileSync, existsSync } from 'node:fs';
+import { writeFileSync, readFileSync, copyFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { sortCatalog } from '../src/lib/catalog-sort.js';
+import { assignSlugs } from '../src/lib/slug.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const outFile = join(root, 'src/data/products.generated.json');
@@ -61,8 +62,11 @@ if (!token || !baseId) {
       console.error('[sync-catalog] products.sample.json missing; cannot bootstrap.');
       process.exit(1);
     }
-    copyFileSync(sampleFile, outFile);
-    console.warn('[sync-catalog] copied products.sample.json → products.generated.json');
+    const sampleData = JSON.parse(readFileSync(sampleFile, 'utf8'));
+    const withSlugs = assignSlugs(sampleData);
+    const sorted = sortCatalog(withSlugs);
+    writeFileSync(outFile, `${JSON.stringify(sorted, null, 2)}\n`, 'utf8');
+    console.warn('[sync-catalog] copied & slugged products.sample.json → products.generated.json');
   } else {
     console.warn('[sync-catalog] products.generated.json already exists — leaving untouched.');
   }
@@ -99,6 +103,7 @@ if (all.length === 0 && isProd) {
   process.exit(1);
 }
 
-const sorted = sortCatalog(all);
+const withSlugs = assignSlugs(all);
+const sorted = sortCatalog(withSlugs);
 writeFileSync(outFile, `${JSON.stringify(sorted, null, 2)}\n`, 'utf8');
 console.log(`[sync-catalog] wrote ${all.length} items → src/data/products.generated.json`);
