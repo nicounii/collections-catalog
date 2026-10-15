@@ -93,9 +93,13 @@ The build syncs them into a generated JSON file; sold items are filtered out at 
 
 Prevents accidentally shipping the sample catalog as the real one:
 
-- Creds **absent** → exit `0` with a warning; fall back to `src/data/products.sample.json`.
+- **Dev**, creds **absent** → exit `0` with a warning; fall back to `src/data/products.sample.json`.
+- **Production**, creds **absent** → exit `1` (never ship the sample catalog as the real one).
 - Creds **present but the API fails**, or a production sync returns **0 items** → exit `1`
   (fails the build).
+
+Production is detected via `NODE_ENV=production` **or** `CF_PAGES=1`. Cloudflare Pages does
+**not** inject `NODE_ENV`, so the `CF_PAGES` check is what makes these guards fire on Pages.
 
 ---
 

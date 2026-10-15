@@ -39,10 +39,16 @@ Preview. Copy the names from `.env.example`.
 | `AIRTABLE_TABLE` | plain | Table name (default `Catalog`) |
 | `NODE_VERSION` | plain | `22` |
 
-If `AIRTABLE_TOKEN`/`AIRTABLE_BASE_ID` are **absent**, the build falls back to
-`src/data/products.sample.json` and exits `0`. If they are **present but the API fails**,
-or a production sync returns **0 items**, the build **fails** (exit `1`) — see the
-fail-loud policy in `README.md`.
+On Cloudflare Pages the build is treated as **production** (`CF_PAGES=1`), so:
+
+- `AIRTABLE_TOKEN`/`AIRTABLE_BASE_ID` **absent** → the build **fails** (exit `1`). It will
+  **not** silently ship the sample catalog. (Locally, without `CF_PAGES`, creds absent still
+  falls back to `src/data/products.sample.json` and exits `0`.)
+- Creds **present but the API fails**, or a production sync returns **0 items** → the build
+  **fails** (exit `1`).
+
+See the fail-loud policy in `README.md`. Note: Cloudflare Pages does **not** inject
+`NODE_ENV`; the guard keys off `CF_PAGES`.
 
 ### Server-time (Admin flow & Webhook)
 

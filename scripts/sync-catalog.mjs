@@ -5,12 +5,14 @@
 //   AIRTABLE_TOKEN    Personal access token (required for real sync)
 //   AIRTABLE_BASE_ID  Base id (required for real sync)
 //   AIRTABLE_TABLE    Table name (default: 'Catalog')
-//   NODE_ENV          'production' enables the zero-items guard
+//   NODE_ENV          'production' enables the production guards
+//   CF_PAGES          '1' on Cloudflare Pages (Pages does NOT inject NODE_ENV)
 //
 // Behavior:
-//   - No creds        → copy products.sample.json → generated (dev fallback), exit 0
+//   - Dev, no creds   → copy products.sample.json → generated (dev fallback), exit 0
+//   - Prod, no creds  → fail-loud, exit 1 (never ship the sample as the real catalog)
 //   - Creds + error   → fail-loud, exit 1
-//   - Production + 0 items → fail-loud, exit 1 (never ship an empty catalog)
+//   - Prod + 0 items  → fail-loud, exit 1 (never ship an empty catalog)
 //
 // Field map (Airtable → app schema): image_url→image, image_alt→imageAlt,
 // mp_link→mpLink, order_ref→orderRef, status→status, created/Created time→added.
@@ -29,7 +31,9 @@ const sampleFile = join(root, 'src/data/products.sample.json');
 const token = process.env.AIRTABLE_TOKEN;
 const baseId = process.env.AIRTABLE_BASE_ID;
 const table = process.env.AIRTABLE_TABLE || 'Catalog';
-const isProd = process.env.NODE_ENV === 'production';
+// Cloudflare Pages does NOT inject NODE_ENV, so key off CF_PAGES too.
+// (Pages injects CI, CF_PAGES, CF_PAGES_COMMIT_SHA, CF_PAGES_BRANCH, CF_PAGES_URL.)
+const isProd = process.env.NODE_ENV === 'production' || process.env.CF_PAGES === '1';
 
 const FIELD_MAP = {
   image_url: 'image',
@@ -54,6 +58,12 @@ function mapRow(fields) {
 
 // ── Dev fallback: no credentials → sample file ──────────────────────────
 if (!token || !baseId) {
+  if (isProd) {
+    console.error(
+      '[sync-catalog] AIRTABLE_TOKEN/AIRTABLE_BASE_ID missing in production — refusing to ship the sample catalog.'
+    );
+    process.exit(1);
+  }
   console.warn(
     '[sync-catalog] AIRTABLE_TOKEN/AIRTABLE_BASE_ID not set — using products.sample.json as dev fallback.'
   );
