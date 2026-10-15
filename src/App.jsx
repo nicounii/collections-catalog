@@ -12,6 +12,7 @@ import Journal from './components/Journal.jsx';
 import Footer from './components/Footer.jsx';
 import CartDrawer from './components/CartDrawer.jsx';
 import DocPage from './pages/DocPage.jsx';
+import ProductPage from './pages/ProductPage.jsx';
 import { useHashRoute } from './lib/useHashRoute.js';
 import { byCategory } from './data/products.js';
 import faq from '../docs/faq.md?raw';
@@ -50,6 +51,7 @@ function Home() {
 export default function App() {
   const hash = useHashRoute();
   const doc = DOCS[hash];
+  const productMatch = window.location.pathname.match(/^\/produto\/([^/]+)\/?$/);
 
   useEffect(() => {
     if (doc) {
@@ -83,7 +85,13 @@ export default function App() {
         <>
           <Announcement />
           <Nav />
-          {doc ? <DocPage markdown={doc} /> : <Home />}
+          {productMatch ? (
+            <ProductPage slug={decodeURIComponent(productMatch[1])} />
+          ) : doc ? (
+            <DocPage markdown={doc} />
+          ) : (
+            <Home />
+          )}
           <Footer />
           <CartDrawer />
         </>

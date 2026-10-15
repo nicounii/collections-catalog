@@ -24,6 +24,7 @@
 // ═══════════════════════════════════════════════════════════════════════
 
 import generated from './products.generated.json';
+import { productSlug } from '../lib/slug.js';
 
 export const CATEGORIES = [
   'Todos',
@@ -40,6 +41,8 @@ export const products = generated;
 
 // Filtra produtos por categoria para os trilhos de seção
 export const byCategory = (cat) => products.filter((p) => p.category === cat);
+
+export const getBySlug = (slug) => products.find((p) => productSlug(p) === slug);
 
 export const journalPosts = [
   {
