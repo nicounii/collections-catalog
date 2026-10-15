@@ -33,8 +33,15 @@ if (new Set(slugs).size !== slugs.length) {
   process.exit(1);
 }
 
-// Strip existing <title>...</title> from htmlTemplate so we can inject renderHeadTags
-const baseHtml = htmlTemplate.replace(/<title>[\s\S]*?<\/title>\s*/i, '');
+// Strip the shell's baseline SEO tags (title, description, canonical, og:*, twitter:*)
+// so the injected per-product tags don't produce duplicates. og:site_name and og:locale
+// are intentionally kept — they are not product-specific.
+const baseHtml = htmlTemplate
+  .replace(/<title>[\s\S]*?<\/title>\s*/i, '')
+  .replace(/<meta\s+name="description"[^>]*>\s*/i, '')
+  .replace(/<link\s+rel="canonical"[^>]*>\s*/i, '')
+  .replace(/<meta\s+property="og:(?:type|title|description|url|image)"[^>]*>\s*/gi, '')
+  .replace(/<meta\s+name="twitter:card"[^>]*>\s*/gi, '');
 
 let prerenderCount = 0;
 for (const product of products) {
@@ -43,6 +50,13 @@ for (const product of products) {
 
   // Inject headTags before </head>
   const productHtml = baseHtml.replace('</head>', `    ${headTags}\n  </head>`);
+
+  // Guard: exactly one canonical per page (duplicates break indexing).
+  const canonicalCount = (productHtml.match(/rel="canonical"/g) || []).length;
+  if (canonicalCount !== 1) {
+    console.error(`expected exactly 1 canonical for ${product.slug}, found ${canonicalCount}`);
+    process.exit(1);
+  }
 
   const outDir = join(root, `dist/produto/${product.slug}`);
   mkdirSync(outDir, { recursive: true });
