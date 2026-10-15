@@ -1,10 +1,11 @@
 import { Icon, stroke } from './icons.jsx';
+import { SITE } from '../lib/site.js';
 
 const COLUMNS = [
   { h: 'Catálogo', links: ['Novidades', 'Quadrinhos', 'Marvel Comics', 'DC Comics', 'Action Figures'] },
   { h: 'Mais', links: ['Retro Gaming', 'Livros de Coleção', 'Promoções', 'Pré-vendas'] },
   { h: 'A loja', links: ['Nossa história', 'Avaliações', 'Consigne conosco', 'Blog'] },
-  { h: 'Contato', links: ['São Paulo, SP', '+55 (11) 9999-0000', 'contato@acervodomarvete.com.br', 'Seg–Sex, 9h–18h'] },
+  { h: 'Contato', links: [SITE.city, SITE.whatsapp, SITE.email, 'Seg–Sex, 9h–18h'] },
 ];
 
 const HELP = [
