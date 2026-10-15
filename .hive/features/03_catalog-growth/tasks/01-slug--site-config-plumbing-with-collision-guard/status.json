@@ -1,0 +1,9 @@
+{
+  "status": "done",
+  "origin": "plan",
+  "planTitle": "Slug + site-config plumbing (with collision guard)",
+  "dependsOn": [],
+  "summary": "Product slug + site config plumbing with collision guard. Files: src/lib/slug.js (slugify/productSlug/assignSlugs), src/lib/site.js (SITE const), src/lib/slug.test.js, scripts/sync-catalog.mjs (assignSlugs on live+sample paths), .env.example (VITE_SITE_URL), products.generated.json slugs. Merged 05a1160. Post-merge hardening: assignSlugs now uses a used-Set + while loop so disambiguated slugs cannot collide with later base slugs (commit 35cde18); slug.test.js now 5 tests. Verified: node --test 39/39 pass, npm run build exit 0.",
+  "schemaVersion": 1,
+  "completedAt": "2026-10-15T00:26:10.430Z"
+}

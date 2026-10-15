@@ -1,0 +1,14 @@
+{
+  "status": "done",
+  "origin": "plan",
+  "planTitle": "Product detail route + view",
+  "dependsOn": [
+    "01-slug--site-config-plumbing-with-collision-guard"
+  ],
+  "baseCommit": "35cde18b23ac351450f40c82012bb54df0a49d22",
+  "schemaVersion": 1,
+  "startedAt": "2026-10-15T00:26:49.343Z",
+  "idempotencyKey": "hive-catalog-growth-02-product-detail-route--view-1",
+  "summary": "Implemented the product detail route and view at /produto/<slug>. Created src/pages/ProductPage.jsx, added getBySlug in src/data/products.js, and updated src/App.jsx to handle the route. Verified build succeeds with npm run build.",
+  "completedAt": "2026-10-15T00:29:39.127Z"
+}

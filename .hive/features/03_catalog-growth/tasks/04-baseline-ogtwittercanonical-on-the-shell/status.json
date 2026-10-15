@@ -1,0 +1,9 @@
+{
+  "status": "done",
+  "origin": "plan",
+  "planTitle": "Baseline OG/Twitter/canonical on the shell",
+  "dependsOn": [],
+  "summary": "Baseline OG/Twitter/canonical meta tags on the app shell. index.html head extended with canonical + og:* + twitter:* using absolute URLs, existing head preserved. Merged 43b3fe4. Verified: npm run build exit 0.",
+  "schemaVersion": 1,
+  "completedAt": "2026-10-15T00:26:12.725Z"
+}

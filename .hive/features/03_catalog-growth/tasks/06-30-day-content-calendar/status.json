@@ -1,0 +1,9 @@
+{
+  "status": "done",
+  "origin": "plan",
+  "planTitle": "30-day content calendar",
+  "dependsOn": [],
+  "summary": "30-day social content calendar. docs/content-calendar-30d.md with 30 data rows (D1-D30) + header, grounded in docs/market-research-social-growth.md. Merged 8c0b186. Verified: file present, npm run build exit 0.",
+  "schemaVersion": 1,
+  "completedAt": "2026-10-15T00:26:15.518Z"
+}

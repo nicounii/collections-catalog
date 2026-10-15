@@ -1,0 +1,14 @@
+{
+  "status": "done",
+  "origin": "plan",
+  "planTitle": "Brand-consistency fixes + rename runbook",
+  "dependsOn": [
+    "01-slug--site-config-plumbing-with-collision-guard"
+  ],
+  "baseCommit": "35cde18b23ac351450f40c82012bb54df0a49d22",
+  "schemaVersion": 1,
+  "startedAt": "2026-10-15T00:26:53.487Z",
+  "idempotencyKey": "hive-catalog-growth-05-brand-consistency-fixes--rename-runbook-1",
+  "summary": "Updated Footer.jsx to source contact details from src/lib/site.js and created docs/brand-and-social-setup.md specifying brand name, social handle rename steps, bio text, and V de Vingança story placement. Verified build passes successfully with no 'São Paulo' occurrences in Footer.jsx.",
+  "completedAt": "2026-10-15T00:28:32.248Z"
+}
