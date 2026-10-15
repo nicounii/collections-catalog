@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://acervodomarvete.com.br/sitemap.xml
