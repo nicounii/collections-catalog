@@ -14,6 +14,7 @@ import CartDrawer from './components/CartDrawer.jsx';
 import DocPage from './pages/DocPage.jsx';
 import ProductPage from './pages/ProductPage.jsx';
 import { useHashRoute } from './lib/useHashRoute.js';
+import { decodeSlug } from './lib/slug.js';
 import { byCategory } from './data/products.js';
 import faq from '../docs/faq.md?raw';
 import conditionGuide from '../docs/condition-guide.md?raw';
@@ -86,7 +87,7 @@ export default function App() {
           <Announcement />
           <Nav />
           {productMatch ? (
-            <ProductPage slug={decodeURIComponent(productMatch[1])} />
+            <ProductPage slug={decodeSlug(productMatch[1])} />
           ) : doc ? (
             <DocPage markdown={doc} />
           ) : (

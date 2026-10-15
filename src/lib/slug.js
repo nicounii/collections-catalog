@@ -9,6 +9,16 @@ export function slugify(input) {
 export function productSlug(product) {
   return product?.slug || slugify(product?.id || product?.title);
 }
+// Decode a URL path segment safely. Malformed input (e.g. a lone "%") would
+// otherwise throw URIError and blank the whole app; fall back to '' so the
+// caller renders its not-found state instead.
+export function decodeSlug(raw) {
+  try {
+    return decodeURIComponent(raw);
+  } catch {
+    return '';
+  }
+}
 // Assign unique slugs; on collision append -2, -3, …
 // The final slug (including any suffix) is registered, so a later item whose
 // base slug equals an earlier disambiguated slug cannot collide.

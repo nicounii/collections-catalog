@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { slugify, productSlug, assignSlugs } from './slug.js';
+import { slugify, productSlug, assignSlugs, decodeSlug } from './slug.js';
 
 test('slugify strips accents, lowercases, hyphenates', () => {
   assert.equal(slugify('Sandman — Edição Definitiva Vol. 1'), 'sandman-edicao-definitiva-vol-1');
@@ -24,4 +24,12 @@ test('assignSlugs never collides with an existing disambiguated slug', () => {
 test('assignSlugs falls back to "item" when id and title are missing', () => {
   const out = assignSlugs([{}, {}]);
   assert.deepEqual(out.map((p) => p.slug), ['item', 'item-2']);
+});
+test('decodeSlug decodes valid percent-encoding', () => {
+  assert.equal(decodeSlug('sandman-edicao'), 'sandman-edicao');
+  assert.equal(decodeSlug('a%20b'), 'a b');
+});
+test('decodeSlug returns "" for malformed input instead of throwing', () => {
+  assert.equal(decodeSlug('%'), '');
+  assert.equal(decodeSlug('%E0%A4%A'), '');
 });
