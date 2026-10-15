@@ -24,7 +24,7 @@
 // ═══════════════════════════════════════════════════════════════════════
 
 import generated from './products.generated.json';
-import { productSlug } from '../lib/slug.js';
+import { productSlug, assignSlugs } from '../lib/slug.js';
 
 export const CATEGORIES = [
   'Todos',
@@ -37,7 +37,10 @@ export const CATEGORIES = [
   'Livros de Coleção',
 ];
 
-export const products = generated;
+// Assign unique slugs once, so client routing (getBySlug) and the build-time
+// prerender (scripts/prerender.mjs) resolve identical slugs — including the
+// -2/-3 suffixes assignSlugs adds on collision.
+export const products = assignSlugs(generated);
 
 // Filtra produtos por categoria para os trilhos de seção
 export const byCategory = (cat) => products.filter((p) => p.category === cat);
