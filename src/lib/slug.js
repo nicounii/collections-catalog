@@ -10,12 +10,16 @@ export function productSlug(product) {
   return product?.slug || slugify(product?.id || product?.title);
 }
 // Assign unique slugs; on collision append -2, -3, …
+// The final slug (including any suffix) is registered, so a later item whose
+// base slug equals an earlier disambiguated slug cannot collide.
 export function assignSlugs(items) {
-  const seen = new Map();
+  const used = new Set();
   return items.map((p) => {
     const base = productSlug(p) || 'item';
-    const n = seen.get(base) || 0;
-    seen.set(base, n + 1);
-    return { ...p, slug: n === 0 ? base : `${base}-${n + 1}` };
+    let slug = base;
+    let n = 2;
+    while (used.has(slug)) slug = `${base}-${n++}`;
+    used.add(slug);
+    return { ...p, slug };
   });
 }

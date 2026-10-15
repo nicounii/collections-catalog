@@ -15,3 +15,13 @@ test('assignSlugs dedupes collisions with a numeric suffix', () => {
   const out = assignSlugs([{ title: 'Mesmo' }, { title: 'Mesmo' }]);
   assert.deepEqual(out.map((p) => p.slug), ['mesmo', 'mesmo-2']);
 });
+test('assignSlugs never collides with an existing disambiguated slug', () => {
+  const out = assignSlugs([{ title: 'Mesmo' }, { title: 'Mesmo' }, { title: 'Mesmo 2' }]);
+  const slugs = out.map((p) => p.slug);
+  assert.deepEqual(slugs, ['mesmo', 'mesmo-2', 'mesmo-2-2']);
+  assert.equal(new Set(slugs).size, slugs.length);
+});
+test('assignSlugs falls back to "item" when id and title are missing', () => {
+  const out = assignSlugs([{}, {}]);
+  assert.deepEqual(out.map((p) => p.slug), ['item', 'item-2']);
+});
