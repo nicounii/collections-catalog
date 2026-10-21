@@ -34,7 +34,7 @@ Preview. Copy the names from `.env.example`.
 
 | Variable | Scope | Notes |
 |----------|-------|-------|
-| `AIRTABLE_TOKEN` | secret | Personal access token, **read** scope on the base |
+| `AIRTABLE_TOKEN` | secret | Personal access token, **read AND write** scope on the base (`data.records:read` + `data.records:write`). Read-only breaks `/admin` — create/patch use this same token. |
 | `AIRTABLE_BASE_ID` | secret | e.g. `appXXXXXXXXXXXXXX` |
 | `AIRTABLE_TABLE` | plain | Table name (default `Catalog`) |
 | `NODE_VERSION` | plain | `22` |

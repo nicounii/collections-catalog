@@ -72,7 +72,7 @@ git log --oneline origin/main..main   # expect: empty
 | Variable | Type | Value |
 |----------|------|-------|
 | `NODE_VERSION` | Plain | `22` |
-| `AIRTABLE_TOKEN` | **Secret** | Airtable personal access token (read scope) |
+| `AIRTABLE_TOKEN` | **Secret** | Airtable PAT — scopes `data.records:read` **+** `data.records:write` |
 | `AIRTABLE_BASE_ID` | **Secret** | e.g. `appXXXXXXXXXXXXXX` |
 | `AIRTABLE_TABLE` | Plain | `Catalog` |
 | `VITE_SITE_URL` | Plain | `https://acervodomarvete.com.br` |
