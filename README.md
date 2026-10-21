@@ -105,6 +105,7 @@ Production is detected via `NODE_ENV=production` **or** `CF_PAGES=1`. Cloudflare
 
 ## Docs
 
+- `docs/launch-runbook.md` — **start here to publish today**: step-by-step Cloudflare Pages + domain + Access setup.
 - `docs/business-plan.md` — market, model, financials, risks.
 - `docs/PLAN-SUMMARY.md` — consolidated implementation brief.
 - `codemap.md` — repository atlas (architecture + per-folder maps).
